@@ -1,0 +1,11 @@
+export const baseColorYel = "bg-[#FFB800]";
+export const hoverColorYel = "hover:bg-[#E0A200]";
+export const textColSecondary = "text-[#2A2A2A]";
+export const textColPrimary = "text-[#1A1A1A]";
+export const borderColor = "border-[#E5E5E5]";
+export const bgColor = "bg-[#F8F8F8]"
+export const bgCartColor = "bg-white"
+export const GreenSuccessCol  = "bg-[#26C681]"
+export const RedErrorCol = "bg-[#FF4B4B]"
+export const BlueInfoCol = "bg-[#3A78F2]"
+export const LightShadeCol = "bg-[#FFF3CC]"

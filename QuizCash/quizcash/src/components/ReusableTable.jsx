@@ -1,0 +1,219 @@
+import { useState } from "react";
+// Icons
+import SearchIcon from "../assets/icons/uil_search.png";
+import DeleteIcon from "../assets/icons/delete-icon.png";
+import EditIcon from "../assets/icons/edit-icon.png";
+import CrossIcon from "../assets/icons/cross-icon.png";
+import RightIcon from "../assets/icons/right-icon.png";
+import FilterIcon from "../assets/icons/filter-icon.png";
+import FilterSortnIcon from "../assets/icons/filter-sort-icon.png";
+import FilterReloadIcon from "../assets/icons/filter-reload-icon.png";
+
+import {
+  bgCartColor,
+  bgColor,
+  borderColor,
+  textColSecondary,
+} from "./ColorLayout";
+import Dropdown from "./Dropdown";
+import RowActionMenu from "./RowActionMenu";
+
+const ReusableTable = ({
+  data = [],
+  columns = [],
+  showSearch = true,
+  showFilter = true,
+  isQuizzesPage = true,
+  onSecondColumnClick,
+}) => {
+  const [openRow, setOpenRow] = useState(null);
+  const hoverbg = "hover:bg-[#F8F8F8]";
+  const [open, setOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false); // tracks filter dropdown
+  const [selectedStatus, setSelectedStatus] = useState("");
+
+  // Dynamic options passed to Dropdown
+  const statusOptions = ["Verified", "Pending", "Rejected"];
+
+  const [menuPos, setMenuPos] = useState({ top: 0, left: 0 });
+
+  // 🔥 Internal handler for 2nd column click
+  const defaultSecondColumnClick = (row) => {};
+
+  const handleEditClick = (e, id) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+
+    setMenuPos({
+      top: rect.bottom + window.scrollY,
+      left: rect.right + window.scrollX,
+    });
+
+    setOpenRow(id);
+  };
+
+  return (
+    <>
+      <div
+        className={`${bgCartColor} mt-4 p-4 border ${borderColor} rounded-2xl`}
+      >
+        {(showSearch || showFilter) && (
+          <div className="flex h-full items-center justify-between pb-4 mr-6 sm:mr-0 ">
+            {showSearch && (
+              <div className="relative w-full sm:max-w-sm">
+                <img
+                  src={SearchIcon}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4"
+                />
+                <input
+                  placeholder="Search here"
+                  className={`border ${bgCartColor} ${borderColor} rounded-md pl-8 pr-2 py-2 w-full text-sm`}
+                />
+              </div>
+            )}
+
+            <div className="relative flex w-full items-center text-right  justify-end -mr-6 sm:mr-0">
+              {showFilter && (
+                  <Dropdown
+                    options={statusOptions} // Pass your dropdown items
+                    defaultValue="Verification Status" // Optional default value
+                    open={dropdownOpen} // Controlled open state
+                    setOpen={setDropdownOpen} // Function to toggle dropdown
+                    onSelect={(val) => setSelectedStatus(val)} // Callback when an item is selected
+                    width="40 sm:50 lg:w-55" // Optional: set width of button
+                  />
+              )}
+            </div>
+            {/* QUIZZES PAGE BUTTONS */}
+            {isQuizzesPage && (
+              <div className="flex items-center justify-end gap-2 w-fit">
+                {/* Filter */}
+                <button
+                  title="Filter"
+                  className="flex items-center justify-center sm:w-20 sm:h-10 h-8 w-8
+               px-2 py-1 sm:px-1 sm:py-2 border rounded-lg text-sm
+               "
+                >
+                  <img src={FilterIcon} className="w-5 h-5" />
+                  <span className="hidden sm:inline ml-2">Filter</span>
+                </button>
+
+                {/* Sort */}
+                <button
+                  title="Sort"
+                  className="flex items-center justify-center sm:w-20 sm:h-10 h-8 w-8
+               px-2 py-1 sm:px-4 sm:py-2 border rounded-lg text-sm
+               "
+                >
+                  <img src={FilterSortnIcon} className="w-5 h-5" />
+                  <span className="hidden sm:inline ml-2">Sort</span>
+                </button>
+
+                {/* Refresh */}
+                <button
+                  title="Refresh"
+                  className="flex items-center justify-center sm:w-16 sm:h-10 h-8 w-8
+               px-2 py-1 sm:px-4 sm:py-2 border rounded-lg text-sm
+               "
+                >
+                  <img src={FilterReloadIcon} className="w-5 h-5" />
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+        {/* ✅ RESPONSIVE FIX */}
+        <div
+          className={`w-full overflow-x-auto transition-all duration-200 ${
+            dropdownOpen ? "blur-xs" : ""
+          }   `}
+          onClick={() => setOpenRow(null)}
+        >
+          <table className={`w-full border-separate border-spacing-y-2`}>
+            <thead className={`${textColSecondary} ${bgColor}`}>
+              <tr>
+                <th className="p-3 text-left rounded-l-2xl">Sr No.</th>
+
+                {columns.map((col) => (
+                  <th key={col.key} className="p-3 text-center">
+                    {col.label}
+                  </th>
+                ))}
+
+                <th className="p-3 text-left rounded-r-2xl">Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {data.map((item, index) => (
+                <tr
+                  key={item.id}
+                  className={`
+                    group transition-all duration-200
+                    ${
+                      openRow && openRow !== item.id
+                        ? "blur-sm pointer-events-none"
+                        : ""
+                    }
+                    ${openRow === item.id ? "relative z-30" : ""}
+                    ${hoverbg}
+                  `}
+                >
+                  {/* 1st column */}
+                  <td className="p-3 rounded-l-2xl">
+                    {String(index + 1).padStart(2, "0")}
+                  </td>
+
+                  {columns.map((col, colIndex) => (
+                    <td
+                      key={col.key}
+                      className={`p-3
+                      ${colIndex === 0 ? "cursor-pointer" : ""} 
+                    `}
+                      // 🔥 Use parent handler if provided, else default
+                      onClick={
+                        colIndex === 0
+                          ? () =>
+                              onSecondColumnClick
+                                ? onSecondColumnClick(item)
+                                : defaultSecondColumnClick(item)
+                          : undefined
+                      }
+                    >
+                      {col.render ? col.render(item) : item[col.key]}
+                    </td>
+                  ))}
+
+                  <td className="rounded-r-2xl">
+                    <div className="relative flex gap-3">
+                      <button
+                        className={`border p-1 ${borderColor} rounded-md`}
+                      >
+                        <img src={DeleteIcon} className="w-5 h-5" />
+                      </button>
+
+                      <button
+                        className={`border p-1 ${borderColor} rounded-md`}
+                        // ⭐ TOGGLE menu per row
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setOpenRow(openRow === item.id ? null : item.id);
+                        }}
+                      >
+                        <img src={EditIcon} className="w-5 h-5" />
+                      </button>
+
+                      <RowActionMenu isOpen={openRow === item.id} />
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {/* Pagination  */}
+      </div>
+    </>
+  );
+};
+
+export default ReusableTable;
