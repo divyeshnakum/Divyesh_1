@@ -128,13 +128,13 @@ const ReusableTable = ({
           }   `}
           onClick={() => setOpenRow(null)}
         >
-          <table className={`w-full border-separate border-spacing-y-2`}>
+          <table className={`w-full text-xs sm:text-sm border-separate border-spacing-y-2`}>
             <thead className={`${textColSecondary} ${bgColor}`}>
               <tr>
                 <th className="p-3 text-left rounded-l-2xl">Sr No.</th>
 
                 {columns.map((col) => (
-                  <th key={col.key} className="p-3 text-center">
+                  <th key={col.key} className="p-1 sm:p-3 text-center">
                     {col.label}
                   </th>
                 ))}

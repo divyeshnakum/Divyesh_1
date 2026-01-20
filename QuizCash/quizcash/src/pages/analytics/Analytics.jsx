@@ -1,11 +1,18 @@
 import Blog from "../../components/Blog";
 import DashboardStats from "../../components/DashboardStats";
 import { useNavigate } from "react-router-dom";
-
+import AnalyticsProfilePage from "./AnalyticsProfilePage";
+import { useState } from "react";
 const Analytics = () => {
-  const navigate = useNavigate();
-  const goToProfile = () => {
-    navigate("/analyticsProfilePage"); // this will go to Profile component
+  // const navigate = useNavigate();
+  // const [showProfile, setShowProfile] = useState(false);
+
+  // const goToProfile = () => {
+  //   setShowProfile(true); // Show the component when button is clicked
+  // };
+  // function to open modal
+  const handleOpenModal = () => {
+    setOpenModal(true);
   };
   return (
     <>
@@ -15,13 +22,15 @@ const Analytics = () => {
         showButton={false}
         extraButton={true}
         extraButtonText="Export"
+        onButtonClick={handleOpenModal}
       ></DashboardStats>
       <Blog />
-      <div>
+      {/* <div>
         <button onClick={goToProfile} className="bg-red border p-4">
           Click to profile
         </button>
-      </div>
+        {showProfile && <AnalyticsProfilePage />}
+      </div> */}
     </>
   );
 };

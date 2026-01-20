@@ -13,12 +13,16 @@ import {
 import Student from "./students/Students";
 import Blog from "../components/Blog";
 import Quizzes from "./quizzes/Quizzes";
-import Rewards from "./Rewards/Rewards";
+import Rewards from "./rewards/Rewards";
 import Payment from "./payment/Payment";
 import Analytics from "./analytics/Analytics";
+import AnalyticsProfilePage from "./analytics/AnalyticsProfilePage";
+import { useNavigate } from "react-router-dom";
+import SettingsPage from "./setting/SettingsPage";
 const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
+  const navigate = useNavigate();
   const menuNames = [
     "Dashboard",
     "Students",
@@ -26,6 +30,7 @@ const Dashboard = () => {
     "Rewards",
     "Payments",
     "Analytics",
+    "Setting"
   ];
 
   const currentPage = menuNames[activeIndex];
@@ -87,6 +92,8 @@ const Dashboard = () => {
           <div>
             <HeaderAdmin
               onHamburgerClick={() => setSidebarOpen(!sidebarOpen)}
+              onProfileClick={() => navigate("/analyticsProfilePage")}
+              onNotifiClick={() => navigate("/notification")}
             />
           </div>
 
@@ -117,6 +124,7 @@ const Dashboard = () => {
             {currentPage === "Rewards" && <Rewards />}
             {currentPage === "Payments" && <Payment />}
             {currentPage === "Analytics" && <Analytics />}
+            {currentPage === "Setting" && <SettingsPage />}
           </div>
         </div>
       </div>

@@ -12,6 +12,7 @@ import {
   hoverColorYel,
   textColPrimary,
   textColSecondary,
+  TextGray
 } from "../../components/ColorLayout";
 import SearchIcon from "../../assets/icons/uil_search.png";
 import RewardSpend from "./RewardsSpeed";
@@ -144,24 +145,24 @@ const Rewards = () => {
                 <div
                   className={` border rounded-2xl p-4 ${borderColor} ${bgCartColor} "`}
                 >
-                  <div className="flex flex-col md:flex-row md:justify-between mb-4 gap-4">
-                    <div className="relative w-full sm:max-w-sm">
-                      <img
-                        src={SearchIcon}
-                        className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4"
-                      />
-                      <input
-                        placeholder="Search here"
-                        className={`border ${bgColor} ${borderColor} rounded-3xl pl-8 pr-4 py-2 w-full text-sm`}
-                      />
-                    </div>
+                  <div className="flex flex-col  md:flex-row md:justify-between mb-4 gap-4">
+                      <div className="w-full flex items-center sm:max-w-sm">
+                        <img
+                          src={SearchIcon}
+                          className="absolute text-center justify-center ml-3 w-4 h-4"
+                        />
+                        <input
+                          placeholder="Search here"
+                          className={`border ${bgColor} ${borderColor} rounded-3xl pl-8 pr-4 py-2 w-full text-sm`}
+                        />
+                      </div>
                     <div className="flex flex-wrap gap-2">
                       <div
-                        className={`flex flex-row gap-2 sm:gap-4 border px-1 sm:px-4 sm:py-2 py-0.5 ${borderColor} rounded-2xl ${bgColor} w-full sm:w-auto`}
+                        className={`flex flex-row gap-2 sm:gap-4 border px-1 sm:px-4 sm:py-1 py-0.5 ${borderColor} rounded-2xl ${bgColor} w-full sm:w-auto`}
                       >
                         <button
                           onClick={() => setActiveDate("today")}
-                          className={`flex-1 sm:flex-none text-center px-2 sm:px-3 py-0 sm:py-2 transition-colors duration-200 cursor-pointer ${
+                          className={`flex-1 sm:flex-none text-center px-2 sm:px-3 py-0 sm:py-1 transition-colors duration-200 cursor-pointer ${
                             activeDate === "today"
                               ? `${BaseTextYel} ${bgCartColor} border-transparent rounded-xl`
                               : `${HoverTextYel}`
@@ -172,7 +173,7 @@ const Rewards = () => {
 
                         <button
                           onClick={() => setActiveDate("week")}
-                          className={`flex-1 sm:flex-none text-center px-3 py-2 sm:py-1 transition-colors duration-200 cursor-pointer ${
+                          className={`flex-1 sm:flex-none text-center px-3 py-0 sm:py-1 transition-colors duration-200 cursor-pointer ${
                             activeDate === "week"
                               ? `${BaseTextYel} ${bgCartColor} border-transparent rounded-xl`
                               : `${HoverTextYel}`
@@ -183,7 +184,7 @@ const Rewards = () => {
 
                         <button
                           onClick={() => setActiveDate("month")}
-                          className={`flex-1 sm:flex-none text-center px-3 py-2 sm:py-1 transition-colors duration-200 cursor-pointer ${
+                          className={`flex-1 sm:flex-none text-center px-3 py-0 sm:py-1 transition-colors duration-200 cursor-pointer ${
                             activeDate === "month"
                               ? `${BaseTextYel} ${bgCartColor} border-transparent rounded-xl`
                               : `${HoverTextYel}`
@@ -206,7 +207,7 @@ const Rewards = () => {
                         <option>Failed</option>
                       </select>
                       <div
-                        className={`flex gap-2 px-4 py-2 ${baseColorYel} ${textColPrimary} rounded-2xl ${hoverColorYel}`}
+                        className={`flex gap-2 px-4 items-center py-2 ${baseColorYel} ${textColPrimary} rounded-2xl ${hoverColorYel}`}
                       >
                         <img
                           src={ExportIcon}

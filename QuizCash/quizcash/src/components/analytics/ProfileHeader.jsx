@@ -1,29 +1,52 @@
+import { borderColor,bgColor,bgCartColor,textColPrimary, textColSecondary, baseColorYel, hoverColorYel } from "../ColorLayout";
+
 const ProfileHeader = ({ name, email, role, image, onEdit }) => {
+  
   return (
-    <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col sm:flex-row items-center sm:items-start gap-4">
-      
-      {/* Avatar */}
+    <>
+      <div className="flex justify-center w-full px-2 sm:px-4">
+  <div className="flex items-center w-full max-w-7xl">
+    
+    {/* Avatar */}
+    <div className="flexed-shrink-0 mr-3 sm:mr-4">
       <img
         src={image}
         alt={name}
-        className="w-20 h-20 rounded-full object-cover border"
+        className="w-14 h-14 sm:w-20 sm:h-20 md:w-26 md:h-24 rounded-full object-cover border"
       />
+    </div>
 
+    {/* Profile Card */}
+    <div
+      className={`flex flex-col sm:flex-row items-start sm:items-center w-full border ${bgCartColor} ${borderColor} rounded-2xl p-4 gap-3 sm:gap-4`}
+    >
+      
       {/* Info */}
       <div className="flex-1">
-        <h2 className="text-xl font-semibold">{name}</h2>
-        <p className="text-sm text-gray-500">{email}</p>
-        <p className="text-sm text-gray-400">{role}</p>
+        <h2
+          className={`text-base sm:text-xl ${textColPrimary} font-bold`}
+        >
+          {name}
+        </h2>
+        <p className="text-sm">{email}</p>
+        <p className="text-sm">{role}</p>
       </div>
 
       {/* Button */}
-      <button
-        onClick={onEdit}
-        className="bg-yellow-400 hover:bg-yellow-500 px-4 py-2 rounded-lg text-sm font-medium"
-      >
-        Edit Profile
-      </button>
+      <div className="flexed-shrink-0 w-full sm:w-auto">
+        <button
+          onClick={onEdit}
+          className={`${baseColorYel} ${hoverColorYel} w-full sm:w-auto px-4 sm:px-5 py-2 rounded-lg text-sm font-medium transition`}
+        >
+          Edit Profile
+        </button>
+      </div>
+
     </div>
+  </div>
+</div>
+
+    </>
   );
 };
 

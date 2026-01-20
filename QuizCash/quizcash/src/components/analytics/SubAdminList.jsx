@@ -1,66 +1,58 @@
-const SubAdminList = ({ admins, onAdd }) => {
+import { baseColorYel, bgCartColor, bgColor, borderColor, hoverColorYel } from "../ColorLayout";
+import SearchIcon from "../../assets/icons/uil_search.png";
+import { useEffect ,useState} from "react";
+import ReusableTable from "../ReusableTable";
+const SubAdminList = ({  onAdd,children  }) => {
+    
+  
   return (
-    <div className="bg-white rounded-xl shadow-sm p-6">
-      
+    <div className={`border ${borderColor} ${bgCartColor} rounded-2xl  p-4`}>
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between gap-4 mb-4">
-        <h3 className="font-semibold">Sub Admin List</h3>
+        <h3 className="font-bold">Sub Admin List</h3>
 
         <button
           onClick={onAdd}
-          className="bg-yellow-400 hover:bg-yellow-500 px-4 py-2 rounded-lg text-sm"
+          className={`${baseColorYel} ${hoverColorYel} font-semibold px-4 py-2 rounded-lg text-sm`}
         >
           Add New Sub Admin
         </button>
       </div>
-
+<></>
       {/* Search + Filters */}
-      <div className="flex flex-col sm:flex-row gap-3 mb-4">
-        <input
-          type="text"
-          placeholder="Search by name or email..."
-          className="border rounded-lg px-3 py-2 w-full sm:w-1/2"
-        />
+      <div
+        className={`flex flex-col items-center justify-between sm:flex-row gap-3 mb-4 border rounded-2xl ${borderColor} ${bgColor} p-2`}
+      >
+        <div className="w-full flex items-center sm:max-w-sm">
+          <img
+            src={SearchIcon}
+            className="absolute text-center justify-center ml-3 w-4 h-4"
+          />
+          <input
+            placeholder="Search by name or email..."
+            className={`border ${bgCartColor} ${borderColor} rounded-lg pl-8 pr-4 py-2 w-full text-sm`}
+          />
+        </div>
+        <div className={`flex flex-row gap-2 md:gap-4`}>
+          <select className={`border ${bgCartColor} ${borderColor} rounded-lg px-1 sm:px-3 py-1`}>
+            <option>All - Roles</option>
+            <option>A - Roles</option>
+            <option>B - Roles</option>
+            <option>C - Roles</option>
+          </select>
 
-        <select className="border rounded-lg px-3 py-2">
-          <option>All - Roles</option>
-        </select>
-
-        <select className="border rounded-lg px-3 py-2">
-          <option>All - Status</option>
-        </select>
+          <select className={`border ${bgCartColor} ${borderColor} rounded-lg px-1 sm:px-3 py-1`}>
+            <option>All - Status</option>
+            <option>A - Status</option>
+            <option>B - Status</option>
+            <option>C - Status</option>
+          </select>
+        </div>{" "}
       </div>
 
       {/* Table */}
-      <div className="overflow-x-auto">
-        <table className="w-full text-sm">
-          <thead className="bg-gray-50 text-gray-500">
-            <tr>
-              <th className="text-left px-4 py-2">Name</th>
-              <th className="text-left px-4 py-2">Email</th>
-              <th className="text-left px-4 py-2">Role</th>
-              <th className="text-left px-4 py-2">Status</th>
-              <th className="text-left px-4 py-2">Action</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {admins.map((admin, index) => (
-              <tr key={index} className="border-b last:border-none">
-                <td className="px-4 py-2">{admin.name}</td>
-                <td className="px-4 py-2 text-gray-500">{admin.email}</td>
-                <td className="px-4 py-2">{admin.role}</td>
-                <td className={`px-4 py-2 ${admin.status === "Active" ? "text-green-600" : "text-gray-400"}`}>
-                  {admin.status}
-                </td>
-                <td className="px-4 py-2 flex gap-2">
-                  <button className="border rounded p-1">✏️</button>
-                  <button className="border rounded p-1">🗑️</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="overflow-x-auto ">
+     {children  }
       </div>
     </div>
   );

@@ -35,10 +35,10 @@ const Quizzes = () => {
     ]);
   }, []);
 
-  // function to open modal
-  const handleOpenModal = () => {
-    setOpenModal(true);
-  };
+    // function to open modal
+    const handleOpenModal = () => {
+      setOpenModal(true);
+    };
 
   const handleCloseModal = () => {
     setOpenModal(false);

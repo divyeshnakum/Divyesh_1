@@ -1,9 +1,11 @@
-import React from "react";
+import React,{useState} from "react";
 import { BellIcon } from "@heroicons/react/24/outline";
-import { bgColor, bgCartColor, borderColor } from "./ColorLayout";
+import { bgColor, bgCartColor, borderColor, TextGray } from "./ColorLayout";
 import SearchIcon from "../assets/icons/uil_search.png";
 
-const HeaderAdmin = ({ onHamburgerClick }) => {
+const HeaderAdmin = ({ onHamburgerClick ,onProfileClick,onNotifiClick}) => {
+     const [open, setOpen] = useState(false);
+  
   return (
     <header
       className={`flex  items-center justify-between gap-2 ${bgColor} px-2 sm:px-4 py-2 border-transparent rounded-2xl shadow`}
@@ -38,11 +40,14 @@ const HeaderAdmin = ({ onHamburgerClick }) => {
       <div className="flex items-center gap-2 sm:gap-4">
         {/* Notification */}
         <BellIcon
+        onClick={onNotifiClick}
           className={`w-8 h-8 p-1 ${bgCartColor} rounded-full cursor-pointer`}
         />
 
         {/* Profile */}
-        <div className="relative group sm:hidden flex items-center gap-2">
+        <div 
+           onClick={onProfileClick}
+        className="cursor-pointer relative group sm:hidden flex items-center gap-2">
           {/* Avatar */}
           <img
             src="https://i.pravatar.cc/40"
@@ -52,20 +57,23 @@ const HeaderAdmin = ({ onHamburgerClick }) => {
 
           {/* Hover info (mobile only) */}
           <div
-            className="
+            className={`
       absolute top-10 right-0
       hidden group-hover:block
-      bg-white shadow-lg rounded-lg p-2
-      text-xs z-50
-    "
+      ${bgCartColor} shadow-lg rounded-lg p-2
+      text-xs z-50 
+    `}
           >
-            <p className="font-medium text-gray-800">Sakshi Pandit</p>
-            <p className="text-gray-500">sasp23@gmail.com</p>
+            <p className="font-medium">Sakshi Pandit</p>
+            <p className={`${TextGray}`}>sasp23@gmail.com</p>
           </div>
         </div>
 
         {/* Desktop version (always visible) */}
-        <div className="hidden sm:flex items-center gap-2">
+        <div
+          onClick={onProfileClick}
+          className="hidden sm:flex items-center gap-2 cursor-pointer"
+        >
           <img
             src="https://i.pravatar.cc/40"
             alt="User"
@@ -73,7 +81,7 @@ const HeaderAdmin = ({ onHamburgerClick }) => {
           />
           <div>
             <p className="text-sm font-medium">Sakshi Pandit</p>
-            <p className="text-xs text-gray-500">sasp23@gmail.com</p>
+            <p className={`text-xs ${TextGray} `}>sasp23@gmail.com</p>
           </div>
         </div>
       </div>

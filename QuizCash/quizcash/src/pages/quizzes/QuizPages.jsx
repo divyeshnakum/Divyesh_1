@@ -217,6 +217,7 @@ const QuizPages = ({ isOpen, onClose }) => {
                             onChange={() =>
                               handleQuestionChange(idx, "correct", opt)
                             }
+                            className="accent-black"
                           />
                           <input
                             type="text"

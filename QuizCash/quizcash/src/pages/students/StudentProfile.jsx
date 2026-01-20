@@ -3,7 +3,9 @@ import React from "react";
 import EmailIcon from "../../assets/icons/email-icon.png";
 import CallIcon from "../../assets/icons/call-icon.png";
 import ImgStudentPro4 from "../../assets/images/image-student-p4.png";
-import BackIcon from "../../assets/icons/back-arrow-icon.png";student-payment-img
+import BackIcon from "../../assets/icons/back-arrow-icon.png";
+import StudentPayment from "../../assets/images/student-payment-img.png";
+
 import {
   bgCartColor,
   bgColor,
@@ -152,11 +154,11 @@ const StudentProfile = ({ student, onBack }) => {
       {/* Stats */}
 
       {/* Blog */}
-      <Blog  hideExtras/>
+      <Blog hideExtras />
 
-      {/* Quiz Report */}
-      <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className={`  overflow-x-auto md:col-span-2`}>
+      {/* Start Quiz Report */}
+      <div className="mt-4 grid grid-cols-1 lg:grid-cols-4 gap-4">
+        <div className={`  overflow-x-auto lg:col-span-3`}>
           <ReusableTableCard
             title="Recent Quiz"
             viewAllLink="/quizzes"
@@ -168,17 +170,74 @@ const StudentProfile = ({ student, onBack }) => {
 
         {/* Support / Help Tickets */}
         <div
-          className={`${bgCartColor} border ${borderColor} rounded-2xl p-4 flex flex-col items-center justify-center`}
+          className={`${bgCartColor} border ${borderColor} rounded-2xl p-4 `}
         >
-          <img
-            src={ImgStudentPro4}
-            alt="No complaints"
-            className="w-full h-full mb-2"
-          />
-          <p className="text-gray-500 text-center">
-            Ooops! Currently no have any complaint
-          </p>
+          <div className={`border-b text-left pb-3 ${borderColor}`}>
+            <h3 className={`text-sm sm:text-xl  text-left ${textColSecondary}`}>
+              Support / Help Ticket
+            </h3>
+          </div>
+          <div className={`flex flex-col items-center justify-center`}>
+            <img
+              src={ImgStudentPro4}
+              alt="No complaints"
+              className="w-full h-full px-5 pt-2 sm:px-2 sm:pt-8 mb-2"
+            />
+            <div className={`w-full sm:px-6`}>
+              <p className={`text-gray-500 text-xs sm:text-lg text-center pb-4`}>
+                Ooops! Currently no have any complaint
+              </p>
+            </div>
+          </div>
         </div>
+        {/* Student perfomans */}
+        <div
+          className={`${bgCartColor} border ${borderColor} rounded-2xl p-4 overflow-x-auto lg:col-span-2`}
+        >
+          <div className={`border-b text-left pb-3 ${borderColor}`}>
+            <h3 className={`text-sm sm:text-xl  text-left ${textColSecondary}`}>
+              Student Perfomans
+            </h3>
+          </div>
+          <div className={`flex flex-col items-center justify-center`}>
+            <img
+              src={ImgStudentPro4}
+              alt="No complaints"
+              className="w-full h-full py-2 px-5 sm:px-28"
+            />
+            <p className={`text-gray-500 text-xs sm:text-lg text-center pb-1`}>
+              Ooops! Currently no have any complaint
+            </p>
+          </div>
+        </div>
+        {/* Payment Method */}
+        <div
+          className={`${bgCartColor} border ${borderColor} rounded-2xl p-4 `}
+        >
+          <div className={`border-b text-left pb-3 ${borderColor}`}>
+            <h3 className={`text-sm sm:text-xl  text-left ${textColSecondary}`}>
+              Payment Method
+            </h3>
+          </div>
+          <div className={`flex flex-col items-center justify-center`}>
+            <img
+              src={StudentPayment}
+              alt="No complaints"
+              className="w-full h-full px-5 py-2 sm:px-10 sm:py-6 mb-2"
+            />
+            <div className={`w-full pb-2`}>
+              <p className={`${textColSecondary} text-xs sm:text-sm text-center pb-2`}>
+                Sakshi has been a verified UPI
+              </p>
+              <p
+                className={`border rounded-xl px-2 py-1 text-xs overflow-hidden text-ellipsis whitespace-nowrap `}
+              >
+                sksdsds8943754@icicic.pay
+              </p>
+            </div>
+          </div>
+        </div>
+        {/* End Quiz Report   */}
       </div>
     </div>
   );

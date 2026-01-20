@@ -25,26 +25,30 @@ const DashboardStats = ({
   return (
     <>
       <div className="">
-        {/* Heading + Create Button */}
-        <div className="flex sm:flex-row items-start sm:items-center justify-between mb-4 px-2 sm:px-4 gap-3">
-          <h2 className="text-xl sm:text-3xl font-semibold">{title}</h2>
+      {/* Heading + Buttons */}
+      <div className="flex sm:flex-row items-start sm:items-center justify-between mb-4 px-2 sm:px-4 gap-3">
+        <h2 className="text-xl sm:text-3xl font-semibold">{title}</h2>
 
-          {showButton && (
+        {/* Main Button */}
+        {showButton && !extraButton && (
+          <button
+            onClick={onButtonClick}
+            className={`flex items-center gap-2 px-2 sm:px-4 py-2.5 text-xs sm:text-base font-medium ${textColPrimary} ${baseColorYel} ${hoverColorYel} rounded-xl transition`}
+          >
+            <img
+              src={plusIcon}
+              alt="Add"
+              className="w-4 h-4 sm:w-5 sm:h-5"
+            />
+            {buttonText}
+          </button>
+        )}
+
+        {/* Dual Buttons */}
+        {extraButton && (
+          <div className="flex sm:flex-row gap-4">
             <button
-              onClick={onButtonClick}
-              className={`flex items-center gap-2 px-2 sm:px-4 py-2.5 text-xs sm:text-base font-medium ${textColPrimary} ${baseColorYel} ${hoverColorYel} rounded-xl transition`}
-            >
-              <img src={plusIcon} alt="Add" className="w-4 h-4 sm:w-5 sm:h-5" />
-              {buttonText}
-            </button>
-          )}
-
-          {/* Extra Button */}
-          {extraButton && (
-            <>
-              <div className="flex sm:flex-row gap-4">
-                <button
-                  onClick={() => {
+              onClick={() => {
                 setActiveButton("main");
                 onButtonClick && onButtonClick();
               }}
@@ -52,10 +56,10 @@ const DashboardStats = ({
                 activeButton === "main" ? baseColorYel : bgCartColor
               } ${hoverColorYel} rounded-xl transition`}
             >
-                  {buttonText}
-                </button>
+              {buttonText}
+            </button>
 
-              <button
+            <button
               onClick={() => {
                 setActiveButton("extra");
                 extraButton.onClick && extraButton.onClick();
@@ -64,16 +68,15 @@ const DashboardStats = ({
                 activeButton === "extra" ? baseColorYel : bgCartColor
               } ${hoverColorYel} border ${borderColor} rounded-xl transition`}
             >
-                  {extraButtonText}
-                </button>
-              </div>
-            </>
-          )}
-        </div>
-
-        {/* ✅ PAGE CONTENT (Table, Graph, etc.) */}
-        {children}
+              {extraButtonText}
+            </button>
+          </div>
+        )}
       </div>
+
+      {/* Page Content */}
+      {children}
+    </div>
     </>
   );
 };

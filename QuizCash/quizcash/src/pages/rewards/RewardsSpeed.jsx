@@ -1,12 +1,11 @@
 import { useState } from "react";
-import { borderColor,bgCartColor,bgColor } from "../../components/ColorLayout";
+import { borderColor,bgCartColor,bgColor,TextGray } from "../../components/ColorLayout";
 
 const tabs = ["History", "Science", "Movies", "General", "Sports", "Music", "Tech"];
 
 export default function RewardSpend() {
   const [activeTab, setActiveTab] = useState("History")
    const HoverTextYel = "hover:text-[#E0A200]";
-  const TextGray = "text-[#4B5563]";
   
   return (
     <div className="w-full max-w-7xl mx-auto">
@@ -14,12 +13,12 @@ export default function RewardSpend() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <h2 className="text-sm sm:text-base font-semibold text-gray-900">
+            <h2 className="text-sm sm:text-base font-semibold ">
               Quiz Reward Spend Breakdown
             </h2>
 
             <div className="flex items-center gap-2 mt-1">
-              <span className="text-2xl sm:text-3xl font-bold text-gray-900">
+              <span className="text-2xl sm:text-3xl font-bold ">
                 ₹15,480
               </span>
               <span className="text-xs sm:text-sm font-medium text-green-600">

@@ -11,9 +11,10 @@ import Dashboard from './pages/Dashboard';
 import Student from './pages/students/Students';
 import Quizzes from './pages/quizzes/Quizzes';
 import QuizPages from './pages/quizzes/QuizPages';
-import Rewards from './pages/Rewards/Rewards';
+import Rewards from './pages/rewards/Rewards';
 import Analytics from './pages/analytics/Analytics';
 import AnalyticsProfilePage from './pages/analytics/AnalyticsProfilePage';
+import NotificationForm from './pages/NotificationForm';
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
          <Route path='/rewards' element={<Rewards />}></Route>
          <Route path='/analytics' element={<Analytics />}></Route>
          <Route path='/analyticsProfilePage' element={<AnalyticsProfilePage />}></Route>
+         <Route path='/notification' element={<NotificationForm />}></Route>
       </Routes>
     </Router>
     </>
