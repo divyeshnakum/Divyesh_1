@@ -151,19 +151,22 @@ const Sidebar = ({
           <div className="flex flex-col align-bottom justify-end gap-2">
             <div className="flex-1 px-3  overflow-y-auto">
               <div
-                className={`
-          group flex items-center gap-3 px-4 py-2 text-md cursor-pointer rounded-r-2xl hover:rounded-2xl border ${borderColor} my-2 -ml-4 hover:-ml-2 hover:px-2 transition-all duration-200 hover:font-bold
-        `}
+                 onClick={() => setActiveIndex(6)} // Set activeIndex to 6 for Settings
+      className={`
+        group flex items-center gap-3 px-4 py-2 text-md cursor-pointer rounded-r-2xl border ${borderColor} my-2 -ml-4 hover:-ml-2 hover:px-2 transition-all duration-200 hover:font-bold hover:border-black hover:rounded-l-2xl
+        ${activeIndex === 6 ? `${textColPrimary}  font-bold rounded-l-2xl border-black   -ml-2 px-2` : ""}
+      `}
               >
                 <img
                   src={iconSettingReg}
                   alt="Settings"
-                  className="w-6 h-6 transition-all duration-200 group-hover:hidden"
+                  className={`w-6 h-6 transition-all duration-200 group-hover:hidden ${activeIndex === 6 ? "hidden" : ""}`}
                 />
                 <img
                   src={iconSettingFill}
                   alt="Settings"
-                  className="w-6 h-6 transition-all duration-200 hidden group-hover:block"
+                  
+                  className={`w-6 h-6 transition-all duration-200 ${activeIndex === 6 ? "block" : "hidden group-hover:block"}`}
                 />
                 <span className=" ">Settings</span>
               </div>

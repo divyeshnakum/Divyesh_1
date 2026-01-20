@@ -13,8 +13,8 @@ import Quizzes from './pages/quizzes/Quizzes';
 import QuizPages from './pages/quizzes/QuizPages';
 import Rewards from './pages/rewards/Rewards';
 import Analytics from './pages/analytics/Analytics';
-import AnalyticsProfilePage from './pages/analytics/AnalyticsProfilePage';
 import NotificationForm from './pages/NotificationForm';
+import AdminProfilePage from './pages/AdminProfilePage';
 
 
 function App() {
@@ -36,8 +36,8 @@ function App() {
          <Route path='/quizmodal' element={<QuizPages />}></Route>
          <Route path='/rewards' element={<Rewards />}></Route>
          <Route path='/analytics' element={<Analytics />}></Route>
-         <Route path='/analyticsProfilePage' element={<AnalyticsProfilePage />}></Route>
          <Route path='/notification' element={<NotificationForm />}></Route>
+         <Route path='/adminprofile' element={<AdminProfilePage />}></Route>
       </Routes>
     </Router>
     </>

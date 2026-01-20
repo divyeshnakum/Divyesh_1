@@ -1,20 +1,25 @@
 import GeneralSettings from "../../components/setting/GeneralSettings";
 import NotificationSecurity from "../../components/setting/NotificationSecurity";
-import AppearanceSettings from "../components/setting/AppearanceSettings";
-import PasswordUpdate from "../components/setting/PasswordUpdate";
+import AppearanceSettings from "../../components/setting/AppearanceSettings";
+import PasswordUpdate from "../../components/setting/PasswordUpdate";
+import DashboardStats from "../../components/DashboardStats";
 
 const SettingsPage = () => {
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
-      <h1 className="text-2xl font-semibold mb-6">Setting</h1>
-
+    <>
+      <DashboardStats
+        title="Setting"
+        buttonText="Payment setup"
+        showButton={false}
+        extraButton={false}
+      />
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <GeneralSettings />
         <NotificationSecurity />
         <AppearanceSettings />
         <PasswordUpdate />
       </div>
-    </div>
+    </>
   );
 };
 

@@ -16,9 +16,10 @@ import Quizzes from "./quizzes/Quizzes";
 import Rewards from "./rewards/Rewards";
 import Payment from "./payment/Payment";
 import Analytics from "./analytics/Analytics";
-import AnalyticsProfilePage from "./analytics/AnalyticsProfilePage";
 import { useNavigate } from "react-router-dom";
 import SettingsPage from "./setting/SettingsPage";
+import NotificationForm from "./NotificationForm";
+import AdminProfilePage from "./AdminProfilePage";
 const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -30,10 +31,11 @@ const Dashboard = () => {
     "Rewards",
     "Payments",
     "Analytics",
-    "Setting"
+    "Setting", "Notification","Adminprofile" 
   ];
 
   const currentPage = menuNames[activeIndex];
+  const [isBlur, setisBlur] = useState(false);
 
   // ✅ Table Columns
   const columns = [
@@ -92,14 +94,15 @@ const Dashboard = () => {
           <div>
             <HeaderAdmin
               onHamburgerClick={() => setSidebarOpen(!sidebarOpen)}
-              onProfileClick={() => navigate("/analyticsProfilePage")}
-              onNotifiClick={() => navigate("/notification")}
+              onProfileClick={() => setActiveIndex(menuNames.indexOf("Adminprofile"))}
+              onNotifiClick={() => setActiveIndex(menuNames.indexOf("Notification"))}
             />
           </div>
 
           {/* Content area */}
-          <div className={`${bgColor} flex-1 p-4  rounded-2xl`}>
+          <div className={`${bgColor} relative flex-1 p-4  rounded-2xl `}>
             {/* 🔹 Stats */}
+            <div className={`duration-200 ${isBlur ? "blur-sm" : ""}`}>
             {currentPage === "Dashboard" && (
               <>
                 <DashboardStats />
@@ -125,8 +128,10 @@ const Dashboard = () => {
             {currentPage === "Payments" && <Payment />}
             {currentPage === "Analytics" && <Analytics />}
             {currentPage === "Setting" && <SettingsPage />}
+            {currentPage === "Notification" && <NotificationForm isOpen={isBlur}/>}
+            {currentPage === "Adminprofile" && <AdminProfilePage isOpen={isBlur}/>}
           </div>
-        </div>
+        </div></div>
       </div>
     </>
   );

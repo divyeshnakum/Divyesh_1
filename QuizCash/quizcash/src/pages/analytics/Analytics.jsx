@@ -1,8 +1,5 @@
 import Blog from "../../components/Blog";
 import DashboardStats from "../../components/DashboardStats";
-import { useNavigate } from "react-router-dom";
-import AnalyticsProfilePage from "./AnalyticsProfilePage";
-import { useState } from "react";
 const Analytics = () => {
   // const navigate = useNavigate();
   // const [showProfile, setShowProfile] = useState(false);

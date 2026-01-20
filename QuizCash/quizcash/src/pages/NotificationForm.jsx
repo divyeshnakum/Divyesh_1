@@ -48,11 +48,13 @@ const NotificationForm = ({ initialData = {}, onSubmit, onClose }) => {
     }
   };
 
-  return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30 z-50">
+  return (<>
+    <div className="absolute inset-0 bg-transparent " />
+     
+    <div className="absolute inset-0 flex items-center justify-center z-50">
       <form
         onSubmit={handleSubmit}
-        className={`${bgCartColor} border ${borderColor} rounded-2xl  w-full max-w-md p-4`}
+        className={`${bgCartColor} border ${borderColor} rounded-2xl h-full max-h-min w-full max-w-md p-4`}
       >
         <div className="flex items-center justify-between mb-2">
           <h2 className="text-lg font-semibold">New Notification</h2>
@@ -195,6 +197,7 @@ const NotificationForm = ({ initialData = {}, onSubmit, onClose }) => {
         </div>
       </form>
     </div>
+    </>
   );
 };
 

@@ -1,14 +1,15 @@
-import ProfileHeader from "../../components/analytics/ProfileHeader";
-import PersonalInfo from "../../components/analytics/PersonalInfo";
-import SubAdminList from "../../components/analytics/SubAdminList";
-import { borderColor, bgColor } from "../../components/ColorLayout";
+import ProfileHeader from "../components/analytics/ProfileHeader";
+import PersonalInfo from "../components/analytics/PersonalInfo";
+import SubAdminList from "../components/analytics/SubAdminList";
+import { borderColor, bgColor } from "../components/ColorLayout";
 import { useState, useEffect } from "react";
-import EditProfileModal from "../../components/analytics/EditProfileModal";
-import ReusableTable from "../../components/ReusableTable";
-import AddSubAdminModal from "../../components/analytics/AddProfileModal";
-const AnalyticsProfilePage = () => {
+import EditProfileModal from "../components/analytics/EditProfileModal";
+import ReusableTable from "../components/ReusableTable";
+import AddSubAdminModal from "../components/analytics/AddProfileModal";
+import DashboardStats from "../components/DashboardStats";
+const AdminProfilePage = () => {
   const [students, setStudents] = useState([]);
-   const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [profileData, setProfileData] = useState({
     name: "Nakum Divyesh p.",
@@ -55,10 +56,12 @@ const AnalyticsProfilePage = () => {
     setModalOpen(false);
   };
   return (
-    <div className={`border ${borderColor} p-4 rounded-2xl space-y-4`}>
-      <div>
-        <h2 className="text-xl sm:text-3xl font-semibold">My Profile</h2>
-      </div>
+    <>
+      <DashboardStats
+        title="My Profile"
+        showButton={false}
+      />
+      <div className="">
       <ProfileHeader
         name={profileData.name}
         email={profileData.email}
@@ -81,8 +84,7 @@ const AnalyticsProfilePage = () => {
         ]}
       />
 
-      <SubAdminList students={students}
-      onAdd={() => setOpen(true)}>
+      <SubAdminList students={students} onAdd={() => setOpen(true)}>
         <>
           {" "}
           <ReusableTable
@@ -97,7 +99,7 @@ const AnalyticsProfilePage = () => {
             showFilter={false}
             isQuizzesPage={false}
           />
-         <AddSubAdminModal isOpen={open} onClose={() => setOpen(false)} />
+          <AddSubAdminModal isOpen={open} onClose={() => setOpen(false)} />
         </>
       </SubAdminList>
       <EditProfileModal
@@ -106,8 +108,9 @@ const AnalyticsProfilePage = () => {
         onSave={handleSave}
         initialData={profileData}
       />
-    </div>
+      </div>
+    </>
   );
 };
 
-export default AnalyticsProfilePage;
+export default AdminProfilePage;

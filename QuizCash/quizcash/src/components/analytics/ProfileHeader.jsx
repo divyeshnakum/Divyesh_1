@@ -4,8 +4,8 @@ const ProfileHeader = ({ name, email, role, image, onEdit }) => {
   
   return (
     <>
-      <div className="flex justify-center w-full px-2 sm:px-4">
-  <div className="flex items-center w-full max-w-7xl">
+      <div className="flex justify-center w-full">
+  <div className="flex items-center w-full max-w-full">
     
     {/* Avatar */}
     <div className="flexed-shrink-0 mr-3 sm:mr-4">
