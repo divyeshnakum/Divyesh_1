@@ -1,4 +1,5 @@
 import { bgColor } from "./ColorLayout";
+
 const AuthLayout = ({ children, image }) => {
   return (
     <div className={`max-h-screen ${bgColor} flex items-center justify-center pt-8 sm:pt-14 md:pt-16

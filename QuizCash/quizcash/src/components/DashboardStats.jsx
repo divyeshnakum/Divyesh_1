@@ -26,7 +26,7 @@ const DashboardStats = ({
     <>
       <div className="">
       {/* Heading + Buttons */}
-      <div className="flex sm:flex-row items-start sm:items-center justify-between mb-4 px-2 sm:px-4 gap-3">
+      <div className="flex sm:flex-row items-start sm:items-center justify-between mb-4 px-2 sm:px-4  ">
         <h2 className="text-xl sm:text-3xl font-semibold">{title}</h2>
 
         {/* Main Button */}

@@ -1,5 +1,6 @@
 import React from "react";
 import { bgCartColor,bgColor,textColPrimary,textColSecondary ,borderColor} from "./ColorLayout";
+
 const ReusableTableCard = ({
   title,
   viewAllLink,

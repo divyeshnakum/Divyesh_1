@@ -10,3 +10,4 @@ export const RedErrorCol = "bg-[#FF4B4B]";
 export const BlueInfoCol = "bg-[#3A78F2]";
 export const LightShadeCol = "bg-[#FFF3CC]";
 export const TextGray = "text-[#4B5563]";
+export const BgButtonYel = "bg-[#FFEAB4]";

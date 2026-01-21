@@ -17,7 +17,7 @@ const ForgotPassword = () => {
         ]}
         footerText="Back to"
         footerLinkText="Sign in"
-        footerLinkAction="/pages/Login"
+        footerLinkAction="/"
       />
     </AuthLayout>
     </>

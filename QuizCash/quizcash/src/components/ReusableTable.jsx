@@ -17,6 +17,8 @@ import {
 } from "./ColorLayout";
 import Dropdown from "./Dropdown";
 import RowActionMenu from "./RowActionMenu";
+import Pagination from "./Pagination";
+
 
 const ReusableTable = ({
   data = [],
@@ -28,7 +30,6 @@ const ReusableTable = ({
 }) => {
   const [openRow, setOpenRow] = useState(null);
   const hoverbg = "hover:bg-[#F8F8F8]";
-  const [open, setOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false); // tracks filter dropdown
   const [selectedStatus, setSelectedStatus] = useState("");
 
@@ -209,6 +210,7 @@ const ReusableTable = ({
               ))}
             </tbody>
           </table>
+              <Pagination data={data} />
         </div>
         {/* Pagination  */}
       </div>

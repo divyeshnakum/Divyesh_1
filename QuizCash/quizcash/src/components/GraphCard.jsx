@@ -5,6 +5,7 @@ import {
   textColSecondary,
   borderColor,
 } from "./ColorLayout";
+
 const GraphCard = ({ title, children }) => {
   return (
     <div

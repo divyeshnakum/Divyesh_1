@@ -6,9 +6,8 @@ import {
   borderColor,
   hoverColorYel,
   TextGray,
-} from "../components/ColorLayout";
-
-const NotificationForm = ({ initialData = {}, onSubmit, onClose }) => {
+} from "../../components/ColorLayout";
+const NotificationForm = ({ initialData = {}, onSubmit,isOpen, onClose }) => {
   const [notificationType, setNotificationType] = useState(
     initialData.notificationType || "",
   );
@@ -47,6 +46,8 @@ const NotificationForm = ({ initialData = {}, onSubmit, onClose }) => {
       reader.readAsDataURL(file);
     }
   };
+  if (!isOpen) return null;
+
 
   return (<>
     <div className="absolute inset-0 bg-transparent " />

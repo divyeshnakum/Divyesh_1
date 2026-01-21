@@ -46,7 +46,7 @@ const Student = () => {
       <DashboardStats
         title="Students"
         buttonText="Add Student"
-        showButton={true}
+        showButton={false}
       >
         {!selectedStudent ? (
           <ReusableTable

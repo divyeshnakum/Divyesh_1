@@ -18,11 +18,18 @@ import Payment from "./payment/Payment";
 import Analytics from "./analytics/Analytics";
 import { useNavigate } from "react-router-dom";
 import SettingsPage from "./setting/SettingsPage";
-import NotificationForm from "./NotificationForm";
-import AdminProfilePage from "./AdminProfilePage";
+import NotificationForm from "./adminProfile/NotificationForm";
+import AdminProfilePage from "./adminProfile/AdminProfilePage";
+import QuizPages from "./quizzes/QuizPages";
+
 const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
+
+  // 🔹 Highlighted Change: Separate states for each modal
+  const [isNotificationOpen, setNotificationOpen] = useState(false);
+  const [isQuizOpen, setQuizOpen] = useState(false);
+
   const navigate = useNavigate();
   const menuNames = [
     "Dashboard",
@@ -31,11 +38,18 @@ const Dashboard = () => {
     "Rewards",
     "Payments",
     "Analytics",
-    "Setting", "Notification","Adminprofile" 
+    "Setting",
+    "Adminprofile",
   ];
 
   const currentPage = menuNames[activeIndex];
-  const [isBlur, setisBlur] = useState(false);
+
+  // 🔹 Highlighted Change: Open/close functions
+  const openNotificationModal = () => setNotificationOpen(true);
+  const closeNotificationModal = () => setNotificationOpen(false);
+
+  const openQuizModal = () => setQuizOpen(true);
+  const closeQuizModal = () => setQuizOpen(false);
 
   // ✅ Table Columns
   const columns = [
@@ -65,7 +79,6 @@ const Dashboard = () => {
     <>
       <div className={`flex flex-col md:flex-row min-h-screen ${bgCartColor}`}>
         {/* Sidebar */}
-        {/* Sidebar for desktop */}
         <Sidebar
           className="hidden md:block w-64 flexed-shrink-0"
           activeIndex={activeIndex}
@@ -91,47 +104,60 @@ const Dashboard = () => {
         {/* Main content */}
         <div className="flex-1 gap-4 flex flex-col min-h-screen p-4">
           {/* Header */}
-          <div>
-            <HeaderAdmin
-              onHamburgerClick={() => setSidebarOpen(!sidebarOpen)}
-              onProfileClick={() => setActiveIndex(menuNames.indexOf("Adminprofile"))}
-              onNotifiClick={() => setActiveIndex(menuNames.indexOf("Notification"))}
-            />
-          </div>
+          <HeaderAdmin
+            onHamburgerClick={() => setSidebarOpen(!sidebarOpen)}
+            onProfileClick={() =>
+              setActiveIndex(menuNames.indexOf("Adminprofile"))
+            }
+            onNotifiClick={openNotificationModal} // 🔹 Open Notification modal
+          />
 
           {/* Content area */}
-          <div className={`${bgColor} relative flex-1 p-4  rounded-2xl `}>
+          <div className={`${bgColor} relative flex-1 p-4 rounded-2xl`}>
             {/* 🔹 Stats */}
-            <div className={`duration-200 ${isBlur ? "blur-sm" : ""}`}>
-            {currentPage === "Dashboard" && (
-              <>
-                <DashboardStats />
+            <div
+              className={`duration-200 ${
+                isNotificationOpen || isQuizOpen ? "blur-sm" : ""
+              }`}
+            >
+              {currentPage === "Dashboard" && (
+                <>
+                  <DashboardStats onButtonClick={openQuizModal} />
+                  <Blog />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                    <GraphCard title="Student Activity Graph" />
+                    <ReusableTableCard
+                      title="Recent Quiz"
+                      viewAllLink="/quizzes"
+                      columns={columns}
+                      data={quizzes}
+                      statusColorMap={statusColorMap}
+                    />
+                  </div>
+                </>
+              )}
 
-                {/* 🔹 Graph + Table */}
-                <Blog />
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                  <GraphCard title="Student Activity Graph" />
-                   <ReusableTableCard
-                  title="Recent Quiz"
-                  viewAllLink="/quizzes"
-                  columns={columns}
-                  data={quizzes}
-                  statusColorMap={statusColorMap}
-                />
-                </div>
-              </>
-            )}{" "}
-            {/* Student page */}
-            {currentPage === "Students" && <Student />}
-            {currentPage === "Quizzes" && <Quizzes />}
-            {currentPage === "Rewards" && <Rewards />}
-            {currentPage === "Payments" && <Payment />}
-            {currentPage === "Analytics" && <Analytics />}
-            {currentPage === "Setting" && <SettingsPage />}
-            {currentPage === "Notification" && <NotificationForm isOpen={isBlur}/>}
-            {currentPage === "Adminprofile" && <AdminProfilePage isOpen={isBlur}/>}
+              {currentPage === "Students" && <Student />}
+              {currentPage === "Quizzes" && <Quizzes />}
+              {currentPage === "Rewards" && <Rewards />}
+              {currentPage === "Payments" && <Payment />}
+              {currentPage === "Analytics" && <Analytics />}
+              {currentPage === "Setting" && <SettingsPage />}
+              {currentPage === "Adminprofile" && <AdminProfilePage />}
+            </div>
+
+            {/* 🔹 Highlighted Change: Render modals independently */}
+            {isNotificationOpen && (
+              <NotificationForm
+                isOpen={true}
+                onClose={closeNotificationModal}
+              />
+            )}
+            {isQuizOpen && (
+              <QuizPages isOpen={true} onClose={closeQuizModal} />
+            )}
           </div>
-        </div></div>
+        </div>
       </div>
     </>
   );

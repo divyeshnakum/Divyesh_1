@@ -2,7 +2,14 @@ import AuthLayout from "../components/AuthLayout";
 import AuthForm from "../components/AuthForm";
 import loginImg from "../assets/images/Login-cuate-1.png";
 import Header from "../HeaderLogin";
+import { useNavigate } from "react-router-dom";
 const Login = () => {
+    const navigate = useNavigate();
+
+  const handleLogin = () => {
+    // ✅ after validation / API success
+    navigate("/dashboard");
+  };
   return (
     <>
       <Header />
@@ -27,7 +34,9 @@ const Login = () => {
           showForgotPassword
           footerText="Don't have an account?"
           footerLinkText="Sign up"
-          footerLinkAction="/pages/Signup"
+          footerLinkAction="signup"
+          forgotLink="forgotPassword"
+          ButtonClick={handleLogin}
         />
       </AuthLayout>
     </>

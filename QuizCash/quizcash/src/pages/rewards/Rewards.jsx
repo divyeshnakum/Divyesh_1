@@ -12,7 +12,7 @@ import {
   hoverColorYel,
   textColPrimary,
   textColSecondary,
-  TextGray
+  TextGray,
 } from "../../components/ColorLayout";
 import SearchIcon from "../../assets/icons/uil_search.png";
 import RewardSpend from "./RewardsSpeed";
@@ -124,45 +124,44 @@ const Rewards = () => {
 
   return (
     <>
-      <div className="">
-        <div className="relative">
-          {/* BLUR ONLY THIS */}
-          <div className={`duration-200 ${openModal ? "blur-sm" : ""}`}>
-            <DashboardStats
-              title="Rewards"
-              buttonText="Add new quiz"
-              showButton={false}
-              onButtonClick={handleOpenModal}
-            >
-              <Blog hideExtras />
+      <div className="w-full relative">
+        {/* BLUR ONLY THIS */}
+        <div className={`duration-200 ${openModal ? "blur-sm" : ""}`}>
+          <DashboardStats
+            title="Rewards"
+            buttonText="Add new quiz"
+            showButton={false}
+            onButtonClick={handleOpenModal}
+          >
+            <Blog hideExtras />
 
-              {/* RewardSpeed */}
-              <div className="py-4">
-                <RewardSpend />
-              </div>
-              <>
-                {/* Start Table  */}
-                <div
-                  className={` border rounded-2xl p-4 ${borderColor} ${bgCartColor} "`}
-                >
-                  <div className="flex flex-col  md:flex-row md:justify-between mb-4 gap-4">
-                      <div className="w-full flex items-center sm:max-w-sm">
-                        <img
-                          src={SearchIcon}
-                          className="absolute text-center justify-center ml-3 w-4 h-4"
-                        />
-                        <input
-                          placeholder="Search here"
-                          className={`border ${bgColor} ${borderColor} rounded-3xl pl-8 pr-4 py-2 w-full text-sm`}
-                        />
-                      </div>
-                    <div className="flex flex-wrap gap-2">
-                      <div
-                        className={`flex flex-row gap-2 sm:gap-4 border px-1 sm:px-4 sm:py-1 py-0.5 ${borderColor} rounded-2xl ${bgColor} w-full sm:w-auto`}
-                      >
+            {/* RewardSpeed */}
+            <div className="py-4">
+              <RewardSpend />
+            </div>
+            <>
+              {/* Start Table  */}
+              <div
+                className={` border rounded-2xl p-4 ${borderColor} ${bgCartColor} "`}
+              >
+                <div className="flex flex-col  md:flex-row md:justify-between mb-4 gap-4">
+                  <div className="w-fit flex items-center ">
+                    <img
+                      src={SearchIcon}
+                      className="absolute text-center justify-center ml-3 w-4 h-4"
+                    />
+                    <input
+                      placeholder="Search here"
+                      className={`border ${bgColor} ${borderColor} rounded-3xl pl-8 pr-4 py-2 w-full text-sm`}
+                    />
+                  </div>
+                  <div className="flex flex-wrap text-xs sm:text-sm gap-2">
+                    <div
+                      className={`flex flex-row gap-2 sm:gap-4 border  px-1 sm:px-2 sm:py-1 py-0.5 ${borderColor} rounded-2xl ${bgColor} w-fit`}
+                    >
                         <button
                           onClick={() => setActiveDate("today")}
-                          className={`flex-1 sm:flex-none text-center px-2 sm:px-3 py-0 sm:py-1 transition-colors duration-200 cursor-pointer ${
+                          className={`flex-1 sm:flex-none text-center  px-1 sm:px-2 py-0 sm:py-1 transition-colors duration-200 cursor-pointer ${
                             activeDate === "today"
                               ? `${BaseTextYel} ${bgCartColor} border-transparent rounded-xl`
                               : `${HoverTextYel}`
@@ -173,7 +172,7 @@ const Rewards = () => {
 
                         <button
                           onClick={() => setActiveDate("week")}
-                          className={`flex-1 sm:flex-none text-center px-3 py-0 sm:py-1 transition-colors duration-200 cursor-pointer ${
+                          className={`flex-1 sm:flex-none text-center px-1 sm:px-2 py-0 sm:py-1 transition-colors duration-200 cursor-pointer ${
                             activeDate === "week"
                               ? `${BaseTextYel} ${bgCartColor} border-transparent rounded-xl`
                               : `${HoverTextYel}`
@@ -184,7 +183,7 @@ const Rewards = () => {
 
                         <button
                           onClick={() => setActiveDate("month")}
-                          className={`flex-1 sm:flex-none text-center px-3 py-0 sm:py-1 transition-colors duration-200 cursor-pointer ${
+                          className={`flex-1 sm:flex-none text-center px-1 sm:px-2 py-0 sm:py-1 transition-colors duration-200 cursor-pointer ${
                             activeDate === "month"
                               ? `${BaseTextYel} ${bgCartColor} border-transparent rounded-xl`
                               : `${HoverTextYel}`
@@ -194,12 +193,12 @@ const Rewards = () => {
                         </button>
                       </div>
                       <div
-                        className={`flex gap-4 border px-4 py-1 ${borderColor} rounded-2xl ${bgColor} `}
+                        className={`flex gap-4 border px-2 py-1 ${borderColor} rounded-2xl ${bgColor} `}
                       >
                         <button className="">Custom Range</button>
                       </div>
                       <select
-                        className={` border px-4 py-1 ${borderColor} rounded-2xl ${bgColor} `}
+                        className={` border px-2 py-1 ${borderColor} rounded-2xl ${bgColor} `}
                       >
                         <option hidden>Status: All</option>
                         <option>Paid</option>
@@ -207,7 +206,7 @@ const Rewards = () => {
                         <option>Failed</option>
                       </select>
                       <div
-                        className={`flex gap-2 px-4 items-center py-2 ${baseColorYel} ${textColPrimary} rounded-2xl ${hoverColorYel}`}
+                        className={`flex gap-2 px-2 items-center py-2 ${baseColorYel} ${textColPrimary} rounded-2xl ${hoverColorYel}`}
                       >
                         <img
                           src={ExportIcon}
@@ -216,47 +215,46 @@ const Rewards = () => {
                         />
                         <button className="">Export to CSV</button>
                       </div>
-                    </div>
-                  </div>
-
-                  <div className="overflow-x-auto ">
-                    <table className="min-w-full text-left">
-                      <thead className={`${bgColor}  ${TextGray}`}>
-                        <tr>
-                          {tableColumns.map((col) => (
-                            <th key={col.label} className="px-6 py-3">
-                              {col.label}
-                            </th>
-                          ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {data.map((item, index) => (
-                          <tr
-                            key={item.id}
-                            className={`${borderColor} ${
-                              index !== data.length - 1 ? "border-b" : ""
-                            }`}
-                          >
-                            {/* 🔥 NO MORE MANUAL <td> */}
-                            {tableColumns.map((col) => (
-                              <td
-                                key={col.label}
-                                className={`px-6 py-4 ${col.className || ""}`} // 🔥 APPLY STYLE
-                              >
-                                {renderCell(item, col)}
-                              </td>
-                            ))}
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
                   </div>
                 </div>
-                {/* End Table */}
-              </>
-            </DashboardStats>
-          </div>
+
+                <div className="">
+                  <table className="w-full max-w-7xl text-left">
+                    <thead className={`${bgColor}  ${TextGray}`}>
+                      <tr>
+                        {tableColumns.map((col) => (
+                          <th key={col.label} className="px-2 py-3">
+                            {col.label}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {data.map((item, index) => (
+                        <tr
+                          key={item.id}
+                          className={`${borderColor} ${
+                            index !== data.length - 1 ? "border-b" : ""
+                          }`}
+                        >
+                          {/* 🔥 NO MORE MANUAL <td> */}
+                          {tableColumns.map((col) => (
+                            <td
+                              key={col.label}
+                              className={`text-xs sm:text-sm px-2 py-2 ${col.className || ""}`} // 🔥 APPLY STYLE
+                            >
+                              {renderCell(item, col)}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              {/* End Table */}
+            </>
+          </DashboardStats>
         </div>
       </div>
     </>

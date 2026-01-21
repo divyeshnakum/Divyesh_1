@@ -64,7 +64,7 @@ const Header = ({ showAuthButtons = true, onSignIn, onSignUp }) => {
                   <button
                     onClick={() => navigate("/login")}
                     className={`${outlineButtonClass} ${
-                      location.pathname === "/login"
+                      location.pathname === "/"
                         ? `${baseColorYel} ${textColPrimary} border-transparent`
                         : ""
                     }`}

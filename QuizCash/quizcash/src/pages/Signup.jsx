@@ -28,7 +28,8 @@ const Signup = () => {
           showForgotPassword
           footerText="Already have an account?"
           footerLinkText="Sign in"
-          footerLinkAction="/pages/Login"
+          footerLinkAction="/"
+          forgotLink="../forgotPassword"
         />
       </AuthLayout>
     </>

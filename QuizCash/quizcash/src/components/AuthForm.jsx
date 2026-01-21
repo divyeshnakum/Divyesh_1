@@ -9,14 +9,17 @@ import {
   bgColor,
   borderColor,
 } from "./ColorLayout";
+
 const AuthForm = ({
   title,
   subtitle,
   fields,
   buttonText,
+  ButtonClick,
   footerText,
   footerLinkText,
   footerLinkAction,
+  forgotLink,
   showRememberMe = false,
   showForgotPassword = false,
 }) => {
@@ -52,7 +55,7 @@ const AuthForm = ({
               >
                 <div
                   className={`w-10 h-5 rounded-full relative transition ${
-                    remember ? "bg-black" : bgCartColor
+                    remember ? "bg-black" : `bg-gray-300`
                   }`}
                 >
                   <span
@@ -68,7 +71,7 @@ const AuthForm = ({
 
             {showForgotPassword && (
               <Link
-                to="../pages/ForgotPassword"
+                to={forgotLink}
                 className={`${textColSecondary} hover:font-semibold`}
               >
                 Forgot Password
@@ -78,6 +81,7 @@ const AuthForm = ({
         )}
 
         <button
+        onClick={ButtonClick}
           type="submit"
           className={`w-full ${baseColorYel} ${hoverColorYel} transition text-black font-medium py-2 rounded-xl`}
         >
