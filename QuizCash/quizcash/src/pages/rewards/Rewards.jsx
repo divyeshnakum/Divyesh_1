@@ -66,13 +66,13 @@ const Rewards = () => {
 
   /* 🔥 NEW: Table column configuration */
   const tableColumns = [
-    { label: "USER", key: "user", type: "user", className: "font-bold" },
+    { label: "USER", key: "user", type: "user", className: `font-bold ${textColSecondary}` },
     { label: "QUIZ NAME", key: "quizName", className: `${TextGray}` },
-    { label: "REWARD AMOUNT", key: "rewardAmount", className: "font-bold" },
+    { label: "REWARD AMOUNT", key: "rewardAmount", className: `font-bold ${textColSecondary}` },
     { label: "UPI ID", key: "upiId", className: `${TextGray}` },
-    { label: "STATUS", key: "status", type: "status" },
+    { label: "STATUS", key: "status", type: "status", className: `${textColSecondary}` },
     { label: "DATE", key: "date", className: `${TextGray}` },
-    { label: "ACTION", type: "action" },
+    { label: "ACTION", type: "action",className: `${textColSecondary}` },
   ];
 
   const statusColors = {
@@ -152,7 +152,7 @@ const Rewards = () => {
                     />
                     <input
                       placeholder="Search here"
-                      className={`border ${bgColor} ${borderColor} rounded-3xl pl-8 pr-4 py-2 w-full text-sm`}
+                      className={`border ${bgColor} ${TextGray} ${borderColor} rounded-3xl pl-8 pr-4 py-2 w-full text-sm`}
                     />
                   </div>
                   <div className="flex flex-wrap text-xs sm:text-sm gap-2">
@@ -161,10 +161,10 @@ const Rewards = () => {
                     >
                         <button
                           onClick={() => setActiveDate("today")}
-                          className={`flex-1 sm:flex-none text-center  px-1 sm:px-2 py-0 sm:py-1 transition-colors duration-200 cursor-pointer ${
+                          className={`flex-1 sm:flex-none text-center ${textColSecondary} px-1 sm:px-2 py-0 sm:py-1 transition-colors duration-200 cursor-pointer ${
                             activeDate === "today"
-                              ? `${BaseTextYel} ${bgCartColor} border-transparent rounded-xl`
-                              : `${HoverTextYel}`
+                              ? ` ${bgCartColor} border-transparent rounded-xl`
+                              : ``
                           }`}
                         >
                           Today
@@ -172,10 +172,10 @@ const Rewards = () => {
 
                         <button
                           onClick={() => setActiveDate("week")}
-                          className={`flex-1 sm:flex-none text-center px-1 sm:px-2 py-0 sm:py-1 transition-colors duration-200 cursor-pointer ${
+                          className={`flex-1 sm:flex-none text-center px-1 sm:px-2 py-0 ${textColSecondary} sm:py-1 transition-colors duration-200 cursor-pointer ${
                             activeDate === "week"
-                              ? `${BaseTextYel} ${bgCartColor} border-transparent rounded-xl`
-                              : `${HoverTextYel}`
+                              ? ` ${bgCartColor} border-transparent rounded-xl`
+                              : ``
                           }`}
                         >
                           This Week
@@ -183,10 +183,10 @@ const Rewards = () => {
 
                         <button
                           onClick={() => setActiveDate("month")}
-                          className={`flex-1 sm:flex-none text-center px-1 sm:px-2 py-0 sm:py-1 transition-colors duration-200 cursor-pointer ${
+                          className={`flex-1 sm:flex-none text-center px-1 sm:px-2 py-0 sm:py-1 transition-colors ${textColSecondary} duration-200 cursor-pointer ${
                             activeDate === "month"
-                              ? `${BaseTextYel} ${bgCartColor} border-transparent rounded-xl`
-                              : `${HoverTextYel}`
+                              ? ` ${bgCartColor} border-transparent rounded-xl`
+                              : ``
                           }`}
                         >
                           This Month
@@ -195,10 +195,10 @@ const Rewards = () => {
                       <div
                         className={`flex gap-4 border px-2 py-1 ${borderColor} rounded-2xl ${bgColor} `}
                       >
-                        <button className="">Custom Range</button>
+                        <button className={`${textColSecondary}`}>Custom Range</button>
                       </div>
                       <select
-                        className={` border px-2 py-1 ${borderColor} rounded-2xl ${bgColor} `}
+                        className={` border px-2 py-1 ${textColSecondary} ${borderColor} rounded-2xl ${bgColor} `}
                       >
                         <option hidden>Status: All</option>
                         <option>Paid</option>
@@ -213,7 +213,7 @@ const Rewards = () => {
                           alt=""
                           className="w-5 h-6 text-center"
                         />
-                        <button className="">Export to CSV</button>
+                        <button className={`${textColSecondary}`}>Export to CSV</button>
                       </div>
                   </div>
                 </div>

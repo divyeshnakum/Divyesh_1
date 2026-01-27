@@ -27,7 +27,9 @@ import {
   textColSecondary,
   RedErrorCol,
   borderColor,
+  TextGray,
 } from "./ColorLayout";
+import { Link } from "react-router-dom";
 
 const Sidebar = ({
   className,
@@ -77,7 +79,7 @@ const Sidebar = ({
       >
         {/* CLOSE BUTTON (mobile) */}
         <button
-          className="absolute top-4 right-4 md:hidden text-2xl font-bold text-gray-700 hover:text-black"
+          className={`absolute top-4 right-4 md:hidden text-2xl font-bold ${TextGray}`}
           onClick={() => setSidebarOpen(false)}
         >
           ✕
@@ -107,7 +109,7 @@ const Sidebar = ({
                     }
                   }}
                   className={`
-                group flex items-center gap-3 px-4 py-2 text-md cursor-pointer  rounded-r-2xl my-2 -ml-4 transition-all  hover:text-lg duration-200 ${hoverColorYel}
+                group flex items-center gap-3 px-4 py-2 text-md cursor-pointer  rounded-r-2xl my-2 -ml-4 transition-all  hover:text-lg duration-200 ${textColPrimary} ${hoverColorYel}
                 ${
                   activeIndex === i
                     ? `${textColPrimary} ${baseColorYel} text-lg`
@@ -153,8 +155,8 @@ const Sidebar = ({
               <div
                  onClick={() => setActiveIndex(6)} // Set activeIndex to 6 for Settings
       className={`
-        group flex items-center gap-3 px-4 py-2 text-md cursor-pointer rounded-r-2xl border ${borderColor} my-2 -ml-4 hover:-ml-2 hover:px-2 transition-all duration-200 hover:font-bold hover:border-black hover:rounded-l-2xl
-        ${activeIndex === 6 ? `${textColPrimary}  font-bold rounded-l-2xl border-black   -ml-2 px-2` : ""}
+        group flex items-center gap-3 px-4 py-2 text-md cursor-pointer rounded-r-2xl border ${textColPrimary} ${borderColor} my-2 -ml-4 hover:-ml-2 hover:px-2 transition-all duration-200 hover:font-bold hover:border-black hover:rounded-l-2xl
+        ${activeIndex === 6 ? `${textColPrimary}  font-bold rounded-l-2xl ${borderColor}   -ml-2 px-2` : ""}
       `}
               >
                 <img
@@ -174,7 +176,8 @@ const Sidebar = ({
 
             {/* LOGOUT at bottom */}
             <div className="pr-3 mb-4">
-              <button
+              <Link
+                to="/"
                 className={`w-full flex items-center justify-center gap-3 px-4 py-2  text-sm font-medium text-white ${RedErrorCol} rounded-r-2xl transition`}
               >
                 <img
@@ -183,7 +186,7 @@ const Sidebar = ({
                   className="w-6 h-6 transition-all duration-200 group-hover:hidden"
                 />
                 Logout
-              </button>
+              </Link>
             </div>
           </div>
         </div>

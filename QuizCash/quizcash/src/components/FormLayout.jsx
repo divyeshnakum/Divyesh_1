@@ -1,13 +1,14 @@
 // components/FormLayout.jsx
 import React from "react";
+import { bgCartColor, textColPrimary } from "./ColorLayout";
 
 const FormLayout = ({ title, actions, children }) => {
   return (
     <div className="max-w-full max-h-screen mt-4">
-      <div className=" max-h-full bg-white rounded-xl shadow-sm md:p-6 overflow-y-auto">
+      <div className={`max-h-full  rounded-xl shadow-sm md:p-6 ${bgCartColor} overflow-y-auto`}>
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <h2 className="text-xl font-semibold text-gray-800">
+          <h2 className={` ${textColPrimary} text-xl font-semibold `}>
             {title}
           </h2>
 

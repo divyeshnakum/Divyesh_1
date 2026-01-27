@@ -7,6 +7,8 @@ import {
   textColPrimary,
   bgColor,
   borderColor,
+  bgCartColor,
+  TextGray,
 } from "./components/ColorLayout";
 
 const Header = ({ showAuthButtons = true, onSignIn, onSignUp }) => {
@@ -26,10 +28,10 @@ const Header = ({ showAuthButtons = true, onSignIn, onSignUp }) => {
 
   const [menuOpen, setMenuOpen] = useState(false);
   return (
-    <div className={`${bgColor} w-100vh`}>
-      <header className="sticky top-10 z-50 max-w-screen-3xl md:w-[987.5] border-transparent rounded-2xl mx-4 sm:mx-6 md:mx-18 lg:mx-24 bg-white shadow-[0_0_20px_rgba(0,0,0,0.15)]">
+    <div className={`${bgColor} w-100vh pt-2`}>
+      <header className={` ${bgCartColor} sticky top-10 z-50 max-w-screen-3xl md:w-[987.5] border-transparent rounded-2xl mx-4 sm:mx-6 md:mx-18 lg:mx-24 shadow-[0_0_20px_rgba(0,0,0,0.15)]`}>
         <div className=" w-full mx-auto my-10">
-          <div className="flex h-16 items-center mx-auto px-4 sm:px-6 lg:px-10 justify-between">
+          <div className={`flex h-16 items-center mx-auto px-4 sm:px-6 lg:px-10 justify-between `}>
             {/* Logo */}
             <div className="flex items-center gap-2">
               <img src={logo_img} alt="Quiz Cash" className="h-full w-fit" />
@@ -52,9 +54,9 @@ const Header = ({ showAuthButtons = true, onSignIn, onSignUp }) => {
                 <div className="hidden md:flex justify-end items-center gap-3">
                   <button
                     onClick={() => navigate("/signup")}
-                    className={`${outlineButtonClass} ${
+                    className={`${outlineButtonClass} ${textColPrimary} ${
                       location.pathname === "/signup"
-                        ? `${baseColorYel} ${textColPrimary} border-transparent`
+                        ? `${baseColorYel} border-transparent`
                         : ""
                     }`}
                   >
@@ -62,10 +64,10 @@ const Header = ({ showAuthButtons = true, onSignIn, onSignUp }) => {
                   </button>
 
                   <button
-                    onClick={() => navigate("/login")}
-                    className={`${outlineButtonClass} ${
+                    onClick={() => navigate("/")}
+                    className={`${outlineButtonClass} ${textColPrimary} ${
                       location.pathname === "/"
-                        ? `${baseColorYel} ${textColPrimary} border-transparent`
+                        ? `${baseColorYel} border-transparent`
                         : ""
                     }`}
                   >
@@ -87,13 +89,13 @@ const Header = ({ showAuthButtons = true, onSignIn, onSignUp }) => {
 
               {/* Sidebar */}
               <div
-                className="fixed top-0 right-0 h-full w-[260px] bg-white z-50 md:hidden
-                    shadow-lg flex flex-col items-center pt-20 gap-4"
+                className={`fixed top-0 right-0 h-full w-[260px]  z-50 md:hidden
+                    shadow-lg flex flex-col items-center pt-20 gap-4 ${bgCartColor}`}
               >
                 {/* ❌ Close Button */}
                 <button
                   onClick={() => setMenuOpen(false)}
-                  className="absolute top-4 left-4 text-2xl font-bold text-gray-600 hover:text-black"
+                  className={`absolute top-4 left-4 text-2xl font-bold ${TextGray}`}
                   aria-label="Close menu"
                 >
                   ×
@@ -110,24 +112,24 @@ const Header = ({ showAuthButtons = true, onSignIn, onSignUp }) => {
 
                 {/* Sign Up Button */}
                 <button
-                  onClick={() => navigate("/pages/Signup")}
-                  className={`${outlineButtonClass} ${
-                    isSignupActive
-                      ? `${baseColorYel} ${textColPrimary} border-transparent`
-                      : ""
-                  }`}
+                  onClick={() => navigate("/signup")}
+                    className={`${outlineButtonClass} ${textColPrimary} ${
+                      location.pathname === "/signup"
+                        ? `${baseColorYel} border-transparent`
+                        : ""
+                    }`}
                 >
                   Sign Up
                 </button>
 
                 {/* Sign In Button */}
                 <button
-                  onClick={() => navigate("/pages/Login")}
-                  className={`${outlineButtonClass} ${
-                    isLoginActive
-                      ? `${baseColorYel} ${textColPrimary} border-transparent`
-                      : ""
-                  }`}
+                  onClick={() => navigate("/")}
+                    className={`${outlineButtonClass} ${textColPrimary} ${
+                      location.pathname === "/"
+                        ? `${baseColorYel} border-transparent`
+                        : ""
+                    }`}
                 >
                   Sign In
                 </button>

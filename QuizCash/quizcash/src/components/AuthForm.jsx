@@ -25,11 +25,11 @@ const AuthForm = ({
 }) => {
   const [remember, setRemember] = useState(false);
   return (
-    <div className="w-full max-w-sm">
+    <div className={`w-full h-full max-w-sm ${bgColor}`}>
       <h2 className={`text-3xl font-semibold ${textColPrimary} mb-2`}>
         {title}
       </h2>
-      <p className={`text-lg  ${textColSecondary}mt-1 mb-6`}>{subtitle}</p>
+      <p className={`text-lg  ${textColSecondary} mt-1 mb-6`}>{subtitle}</p>
 
       <form className="space-y-4">
         {fields.map((field, index) => (
@@ -40,7 +40,7 @@ const AuthForm = ({
             <input
               type={field.type}
               placeholder={field.placeholder}
-              className={`w-full rounded-xl border ${borderColor} px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:${baseColorYel}`}
+              className={`w-full rounded-xl border ${textColSecondary} ${borderColor} px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:${baseColorYel}`}
             />
           </div>
         ))}
@@ -83,14 +83,14 @@ const AuthForm = ({
         <button
         onClick={ButtonClick}
           type="submit"
-          className={`w-full ${baseColorYel} ${hoverColorYel} transition text-black font-medium py-2 rounded-xl`}
+          className={`w-full ${baseColorYel} ${hoverColorYel} transition ${textColSecondary} font-medium py-2 rounded-xl`}
         >
           {buttonText}
         </button>
       </form>
 
       {footerText && footerLinkAction && (
-        <p className="text-sm text-[#1C1C1C] text-center mt-4">
+        <p className={`text-sm ${textColPrimary} text-center mt-4`}>
           {footerText}{" "}
           <Link
             to={footerLinkAction}

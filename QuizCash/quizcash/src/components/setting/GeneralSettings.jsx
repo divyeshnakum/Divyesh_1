@@ -1,20 +1,20 @@
-import { baseColorYel, bgCartColor, borderColor, hoverColorYel, TextGray } from "../ColorLayout";
+import { baseColorYel, bgCartColor, borderColor, hoverColorYel, textColPrimary, textColSecondary, TextGray } from "../ColorLayout";
 
 const GeneralSettings = () => {
   
   return (
     <div
-      className={`${bgCartColor}  rounded-2xl shadow-md p-4 `}
+      className={`${bgCartColor} ${borderColor}  border rounded-2xl shadow-md p-4 `}
     >
       {/* Header */}
-      <div className={`border-b ${borderColor} mb-4`}>
+      <div className={`border-b ${textColPrimary} ${borderColor} mb-4`}>
         <h2 className="text-lg sm:text-xl font-semibold mb-2">
           General Settings
         </h2>
       </div>
 
       {/* Form Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className={` ${textColSecondary} grid grid-cols-1 md:grid-cols-2 gap-6`}>
         {/* Platform Name */}
         <div>
           <label className="block text-xs sm:text-sm font-medium mb-2">
@@ -65,7 +65,7 @@ const GeneralSettings = () => {
       </div>
 
       {/* Footer Text */}
-      <div className="mt-6">
+      <div className={` ${textColSecondary} mt-6`}>
         <label className="block text-xs sm:text-sm font-medium mb-2">
           Footer Text
         </label>
@@ -77,7 +77,7 @@ const GeneralSettings = () => {
       </div>
 
       {/* Button */}
-      <button className={`w-full mt-4 ${baseColorYel} ${hoverColorYel} font-semibold py-2 rounded-xl cursor-pointer`}>
+      <button className={`w-full mt-4 ${baseColorYel} ${hoverColorYel} ${textColSecondary} font-semibold py-2 rounded-xl cursor-pointer`}>
         Save Changes
       </button>
     </div>

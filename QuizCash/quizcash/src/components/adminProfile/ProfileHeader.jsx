@@ -28,15 +28,15 @@ const ProfileHeader = ({ name, email, role, image, onEdit }) => {
         >
           {name}
         </h2>
-        <p className="text-sm">{email}</p>
-        <p className="text-sm">{role}</p>
+        <p className={`text-sm ${textColSecondary}`}>{email}</p>
+        <p className={`text-sm ${textColSecondary}`}>{role}</p>
       </div>
 
       {/* Button */}
       <div className="flexed-shrink-0 w-full sm:w-auto">
         <button
           onClick={onEdit}
-          className={`${baseColorYel} ${hoverColorYel} w-full sm:w-auto px-4 sm:px-5 py-2 rounded-lg text-sm font-medium transition`}
+          className={`${baseColorYel} ${textColSecondary} ${hoverColorYel} w-full sm:w-auto px-4 sm:px-5 py-2 rounded-lg text-sm font-medium transition`}
         >
           Edit Profile
         </button>

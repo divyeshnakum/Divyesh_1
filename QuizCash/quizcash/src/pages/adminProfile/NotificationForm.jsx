@@ -5,6 +5,8 @@ import {
   bgColor,
   borderColor,
   hoverColorYel,
+  textColPrimary,
+  textColSecondary,
   TextGray,
 } from "../../components/ColorLayout";
 const NotificationForm = ({ initialData = {}, onSubmit,isOpen, onClose }) => {
@@ -57,7 +59,7 @@ const NotificationForm = ({ initialData = {}, onSubmit,isOpen, onClose }) => {
         onSubmit={handleSubmit}
         className={`${bgCartColor} border ${borderColor} rounded-2xl h-full max-h-min w-full max-w-md p-4`}
       >
-        <div className="flex items-center justify-between mb-2">
+        <div className={`flex items-center justify-between mb-2 ${textColPrimary}`}>
           <h2 className="text-lg font-semibold">New Notification</h2>
           <button
             onClick={onClose}
@@ -66,7 +68,7 @@ const NotificationForm = ({ initialData = {}, onSubmit,isOpen, onClose }) => {
             ✕
           </button>
         </div>
-        <div className={` border-t border-b ${borderColor} py-4`}>
+        <div className={` border-t border-b ${borderColor} ${textColSecondary} py-4`}>
           {/* Notification Type */}
           <div className="mb-4">
             <label className="block text-sm font-medium mb-1">
@@ -135,7 +137,7 @@ const NotificationForm = ({ initialData = {}, onSubmit,isOpen, onClose }) => {
               />
               <label
                 htmlFor="icon-upload"
-                className={`bg-gray-200 ${TextGray} px-3 py-1 rounded-md cursor-pointer`}
+                className={`${baseColorYel} ${TextGray} px-3 py-1 rounded-md cursor-pointer`}
               >
                 Upload SVG/PNG
               </label>
@@ -184,8 +186,8 @@ const NotificationForm = ({ initialData = {}, onSubmit,isOpen, onClose }) => {
         <div className="flex justify-between mt-4 gap-3">
           <button
             type="button"
-            onClick={handleClose}
-            className={`border rounded-xl px-4 py-2 hover:bg-gray-200 cursor-pointer sm:w-26`}
+            onClick={onClose}
+            className={`border rounded-xl px-4 py-2 ${hoverColorYel}  cursor-pointer sm:w-26`}
           >
             Cancel
           </button>

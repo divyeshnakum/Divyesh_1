@@ -4,6 +4,9 @@ import {
   baseColorYel,
   hoverColorYel,
   bgCartColor,
+  textColPrimary,
+  textColSecondary,
+  bgColor,
 } from "../ColorLayout";
 
 const AddSubAdminModal = ({ isOpen, onClose }) => {
@@ -15,10 +18,10 @@ const AddSubAdminModal = ({ isOpen, onClose }) => {
       <div className="absolute inset-0 bg-transparent " />
       <div className="absolute inset-0 z-50 flex items-center justify-center  px-4">
         <div
-          className={`w-full p-4 max-w-2xl border ${borderColor} rounded-2xl ${bgCartColor}`}
+          className={`w-full p-4 max-w-2xl border ${borderColor} rounded-2xl ${bgColor}`}
         >
           {/* Header */}
-          <div className="flex items-center justify-between pd-3 pb-4">
+          <div className={`flex items-center justify-between pd-3 pb-4 ${textColPrimary}`}>
             <h2 className="text-lg font-semibold">Add New Sub Admin</h2>
             <button onClick={onClose} className="cursor-pointer">
               ✕
@@ -26,12 +29,12 @@ const AddSubAdminModal = ({ isOpen, onClose }) => {
           </div>
 
           <div
-            className={`border-t border-b py-3 sm:py-4 md:py-6 lg:py-8 ${borderColor}`}
+            className={`border-t border-b ${borderColor} py-3 sm:py-4 md:py-6 lg:py-8 ${textColSecondary} ${borderColor}`}
           >
             {/* Body */}
             <div className="space-y-4">
               {/* Row 1 */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className={` grid grid-cols-1 sm:grid-cols-2 gap-4 `}>
                 <div>
                   <label className="block text-sm mb-1">Full Name</label>
                   <input
@@ -84,10 +87,10 @@ const AddSubAdminModal = ({ isOpen, onClose }) => {
           </div>
 
           {/* Footer */}
-          <div className="flex items-center justify-end gap-4 pt-4">
+          <div className={`flex items-center justify-end gap-4 pt-4 ${textColSecondary}`}>
             <button
               onClick={onClose}
-              className={`px-4 py-2 rounded-2xl  hover:bg-gray-200 cursor-pointer`}
+              className={`px-4 py-2 rounded-md  ${hoverColorYel} cursor-pointer`}
             >
               Cancel
             </button>

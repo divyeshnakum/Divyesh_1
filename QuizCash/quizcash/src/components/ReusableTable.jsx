@@ -19,7 +19,6 @@ import Dropdown from "./Dropdown";
 import RowActionMenu from "./RowActionMenu";
 import Pagination from "./Pagination";
 
-
 const ReusableTable = ({
   data = [],
   columns = [],
@@ -30,6 +29,7 @@ const ReusableTable = ({
 }) => {
   const [openRow, setOpenRow] = useState(null);
   const hoverbg = "hover:bg-[#F8F8F8]";
+  const hoverText = "group-hover:text-black";
   const [dropdownOpen, setDropdownOpen] = useState(false); // tracks filter dropdown
   const [selectedStatus, setSelectedStatus] = useState("");
 
@@ -67,21 +67,21 @@ const ReusableTable = ({
                 />
                 <input
                   placeholder="Search here"
-                  className={`border ${bgCartColor} ${borderColor} rounded-md pl-8 pr-2 py-2 w-full text-sm`}
+                  className={`border ${bgCartColor} ${borderColor} ${textColSecondary} rounded-md pl-8 pr-2 py-2 w-full text-sm`}
                 />
               </div>
             )}
 
             <div className="relative flex w-full items-center text-right  justify-end -mr-6 sm:mr-0">
               {showFilter && (
-                  <Dropdown
-                    options={statusOptions} // Pass your dropdown items
-                    defaultValue="Verification Status" // Optional default value
-                    open={dropdownOpen} // Controlled open state
-                    setOpen={setDropdownOpen} // Function to toggle dropdown
-                    onSelect={(val) => setSelectedStatus(val)} // Callback when an item is selected
-                    width="40 sm:50 lg:w-55" // Optional: set width of button
-                  />
+                <Dropdown
+                  options={statusOptions} // Pass your dropdown items
+                  defaultValue="Verification Status" // Optional default value
+                  open={dropdownOpen} // Controlled open state
+                  setOpen={setDropdownOpen} // Function to toggle dropdown
+                  onSelect={(val) => setSelectedStatus(val)} // Callback when an item is selected
+                  width="40 sm:50 lg:w-55" // Optional: set width of button
+                />
               )}
             </div>
             {/* QUIZZES PAGE BUTTONS */}
@@ -90,9 +90,8 @@ const ReusableTable = ({
                 {/* Filter */}
                 <button
                   title="Filter"
-                  className="flex items-center justify-center sm:w-20 sm:h-10 h-8 w-8
-               px-2 py-1 sm:px-1 sm:py-2 border rounded-lg text-sm
-               "
+                  className={`flex items-center justify-center sm:w-20 sm:h-10 h-8 w-8
+               px-2 py-1 sm:px-1 sm:py-2 border rounded-lg text-sm ${textColSecondary} ${borderColor}`}
                 >
                   <img src={FilterIcon} className="w-5 h-5" />
                   <span className="hidden sm:inline ml-2">Filter</span>
@@ -101,9 +100,8 @@ const ReusableTable = ({
                 {/* Sort */}
                 <button
                   title="Sort"
-                  className="flex items-center justify-center sm:w-20 sm:h-10 h-8 w-8
-               px-2 py-1 sm:px-4 sm:py-2 border rounded-lg text-sm
-               "
+                  className={`flex items-center justify-center sm:w-20 sm:h-10 h-8 w-8
+               px-2 py-1 sm:px-1 sm:py-2 border rounded-lg text-sm ${textColSecondary} ${borderColor}`}
                 >
                   <img src={FilterSortnIcon} className="w-5 h-5" />
                   <span className="hidden sm:inline ml-2">Sort</span>
@@ -112,9 +110,8 @@ const ReusableTable = ({
                 {/* Refresh */}
                 <button
                   title="Refresh"
-                  className="flex items-center justify-center sm:w-16 sm:h-10 h-8 w-8
-               px-2 py-1 sm:px-4 sm:py-2 border rounded-lg text-sm
-               "
+                  className={`flex items-center justify-center sm:w-20 sm:h-10 h-8 w-8
+               px-2 py-1 sm:px-1 sm:py-2 border rounded-lg text-sm ${textColSecondary} ${borderColor}`}
                 >
                   <img src={FilterReloadIcon} className="w-5 h-5" />
                 </button>
@@ -129,7 +126,9 @@ const ReusableTable = ({
           }   `}
           onClick={() => setOpenRow(null)}
         >
-          <table className={`w-full text-xs sm:text-sm border-separate border-spacing-y-2`}>
+          <table
+            className={`w-full text-xs sm:text-sm border-separate border-spacing-y-2`}
+          >
             <thead className={`${textColSecondary} ${bgColor}`}>
               <tr>
                 <th className="p-3 text-left rounded-l-2xl">Sr No.</th>
@@ -148,7 +147,7 @@ const ReusableTable = ({
               {data.map((item, index) => (
                 <tr
                   key={item.id}
-                  className={`
+                  className={`group ${textColSecondary} ${hoverbg} 
                     group transition-all duration-200
                     ${
                       openRow && openRow !== item.id
@@ -156,18 +155,18 @@ const ReusableTable = ({
                         : ""
                     }
                     ${openRow === item.id ? "relative z-30" : ""}
-                    ${hoverbg}
+                   
                   `}
                 >
                   {/* 1st column */}
-                  <td className="p-3 rounded-l-2xl">
+                  <td className={`p-3 rounded-l-2xl ${hoverText}`}>
                     {String(index + 1).padStart(2, "0")}
                   </td>
 
                   {columns.map((col, colIndex) => (
                     <td
                       key={col.key}
-                      className={`p-3
+                      className={`p-3 ${hoverText}
                       ${colIndex === 0 ? "cursor-pointer" : ""} 
                     `}
                       // 🔥 Use parent handler if provided, else default
@@ -184,7 +183,7 @@ const ReusableTable = ({
                     </td>
                   ))}
 
-                  <td className="rounded-r-2xl">
+                  <td className={`  ${hoverText} rounded-r-2xl `}>
                     <div className="relative flex gap-3">
                       <button
                         className={`border p-1 ${borderColor} rounded-md`}
@@ -210,7 +209,7 @@ const ReusableTable = ({
               ))}
             </tbody>
           </table>
-              <Pagination data={data} />
+          <Pagination data={data} />
         </div>
         {/* Pagination  */}
       </div>

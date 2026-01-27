@@ -2,6 +2,8 @@ import {
   baseColorYel,
   bgCartColor,
   borderColor,
+  textColPrimary,
+  textColSecondary,
   TextGray,
 } from "../ColorLayout";
 import { useState } from "react";
@@ -42,13 +44,13 @@ const NotificationSecurity = () => {
       <div
         className={`flex justify-between pb-2 mb-4 border-b ${borderColor} `}
       >
-        <h2 className="text-base sm:text-lg font-semibold">Notifications & Security</h2>
+        <h2 className={` ${textColPrimary} text-base sm:text-lg font-semibold`}>Notifications & Security</h2>
         <button className={`text-xs sm:text-sm ${TextGray}`}>Reset</button>
       </div>
-      <div className={`border-b pb-2 mb-2 border-dashed ${borderColor}`}>
+      <div className={`border-b pb-2 mb-2 border-dashed ${textColSecondary} ${borderColor}`}>
         <h3 className="text-xs sm:text-sm font-semibold ">Notification Toggles</h3>
       </div>
-      <div className="space-y-4">
+      <div className={` ${textColSecondary} space-y-4`}>
         {[
           ["Reward Distribution Alerts", "reward"],
           ["Payment Alerts", "payment"],
@@ -65,10 +67,10 @@ const NotificationSecurity = () => {
         ))}
       </div>
 
-      <div className={`border-b pb-2 my-2 border-dashed ${borderColor}`}>
+      <div className={`border-b pb-2 my-2 border-dashed ${textColSecondary} ${borderColor}`}>
         <h3 className="text-xs sm:text-sm font-semibold">System Setting</h3>
       </div>
-      <div className="space-y-3 text-xs sm:text-sm">
+      <div className={` space-y-3 text-xs sm:text-sm ${textColSecondary}`}>
         <div className="space-y-4">
           <p className="">Enable 2FA Login</p>
 

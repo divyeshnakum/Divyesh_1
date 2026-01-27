@@ -1,4 +1,4 @@
-import { baseColorYel, bgCartColor, bgColor, borderColor, hoverColorYel } from "../ColorLayout";
+import { baseColorYel, bgCartColor, bgColor, borderColor, hoverColorYel, textColPrimary, textColSecondary } from "../ColorLayout";
 import SearchIcon from "../../assets/icons/uil_search.png";
 import { useEffect ,useState} from "react";
 import ReusableTable from "../ReusableTable";
@@ -9,19 +9,18 @@ const SubAdminList = ({  onAdd,children  }) => {
     <div className={`border ${borderColor} ${bgCartColor} rounded-2xl  p-4`}>
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between gap-4 mb-4">
-        <h3 className="font-bold">Sub Admin List</h3>
+        <h3 className={`font-bold ${textColPrimary}`}>Sub Admin List</h3>
 
         <button
           onClick={onAdd}
-          className={`${baseColorYel} ${hoverColorYel} font-semibold px-4 py-2 rounded-lg text-sm`}
+          className={`${baseColorYel} ${textColSecondary} ${hoverColorYel} font-semibold px-4 py-2 rounded-lg text-sm`}
         >
           Add New Sub Admin
         </button>
       </div>
-<></>
       {/* Search + Filters */}
       <div
-        className={`flex flex-col items-center justify-between sm:flex-row gap-3 mb-4 border rounded-2xl ${borderColor} ${bgColor} p-2`}
+        className={`flex flex-col items-center justify-between sm:flex-row gap-3 mb-4 border rounded-2xl ${borderColor} ${bgColor} ${textColSecondary} p-2`}
       >
         <div className="w-full flex items-center sm:max-w-sm">
           <img

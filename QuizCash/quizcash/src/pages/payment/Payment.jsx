@@ -1,6 +1,7 @@
 import Blog from "../../components/Blog";
 import DashboardStats from "../../components/DashboardStats";
 import SearchIcon from "../../assets/icons/uil_search.png";
+import { bgCartColor, borderColor, textColPrimary, textColSecondary } from "../../components/ColorLayout";
 
 const Payment = () => {
   return (
@@ -13,15 +14,15 @@ const Payment = () => {
         extraButtonText="Export"
       />
       <Blog />
-      <div className="w-full p-4 md:p-6 bg-gray-50">
+      <div className={`w-full p-4 mt-4 md:p-6 border rounded-2xl ${borderColor} ${bgCartColor}`}>
         {/* Title */}
-        <h2 className="text-lg font-semibold mb-4">Payout Trends</h2>
+        <h2 className={`text-lg ${textColPrimary} font-semibold mb-4`}>Payout Trends</h2>
 
         {/* Cards */}
 
         {/* Rewards Table Header */}
         <div className="mt-4">
-          <h3 className="text-sm font-semibold mb-2">Rewards Table</h3>
+          <h3 className={` ${textColSecondary} text-sm font-semibold mb-2`}>Rewards Table</h3>
 
           {/* Filters */}
           <div className="flex flex-col md:flex-row items-center justify-between">
@@ -33,18 +34,18 @@ const Payment = () => {
               <input
                 type="text"
                 placeholder="Search User / UPI / Payment ID"
-                className="w-full md:w-1/2 px-4 py-2 border rounded-lg pl-8 text-sm outline-none "
+                className={`w-full md:w-1/2 px-4 py-2 border rounded-lg ${borderColor} pl-8 text-sm outline-none ${textColSecondary}`}
               />
             </div>
 
             <div className="flex gap-2">
-              <button className="px-4 py-2 border rounded-lg text-sm">
+              <button className={`px-4 py-2 border rounded-lg text-sm ${textColSecondary} ${borderColor}`}>
                 Status
               </button>
-              <button className="px-4 py-2 border rounded-lg text-sm">
+              <button className={`px-4 py-2 border rounded-lg text-sm ${textColSecondary} ${borderColor}`}>
                 Date
               </button>
-              <button className="px-4 py-2 border rounded-lg text-sm">
+              <button className={`px-4 py-2 border rounded-lg text-sm ${textColSecondary} ${borderColor}`}>
                 Amount
               </button>
             </div>

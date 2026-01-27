@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { borderColor,bgCartColor,bgColor,TextGray } from "../../components/ColorLayout";
+import { borderColor,bgCartColor,bgColor,TextGray, textColPrimary, textColSecondary } from "../../components/ColorLayout";
 
 const tabs = ["History", "Science", "Movies", "General", "Sports", "Music", "Tech"];
 
@@ -13,11 +13,11 @@ export default function RewardSpend() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <h2 className="text-sm sm:text-base font-semibold ">
+            <h2 className={` ${textColPrimary} text-sm sm:text-base font-semibold `}>
               Quiz Reward Spend Breakdown
             </h2>
 
-            <div className="flex items-center gap-2 mt-1">
+            <div className={`flex items-center gap-2 mt-1 ${textColPrimary}`}>
               <span className="text-2xl sm:text-3xl font-bold ">
                 ₹15,480
               </span>
@@ -29,7 +29,7 @@ export default function RewardSpend() {
 
           {/* Dropdown */}
           <div>
-            <select className={`border ${borderColor} rounded-lg px-3 py-2 text-sm`}>
+            <select className={`border ${borderColor} ${textColSecondary} ${bgCartColor} rounded-lg px-3 py-2 text-sm`}>
               <option hidden>This Month</option>
               <option>This week</option>
               <option>Today </option>

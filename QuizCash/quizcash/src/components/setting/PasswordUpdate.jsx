@@ -3,6 +3,8 @@ import {
   bgCartColor,
   borderColor,
   hoverColorYel,
+  textColPrimary,
+  textColSecondary,
   TextGray,
 } from "../ColorLayout";
 
@@ -11,10 +13,10 @@ const PasswordUpdate = () => {
     <div
       className={` ${bgCartColor} border ${borderColor} h-fit rounded-2xl shadow p-4`}
     >
-      <div className={`border-b ${borderColor} mb-4 pb-2`}>
+      <div className={`border-b ${textColPrimary} ${borderColor} mb-4 pb-2`}>
         <h2 className="text-base sm:text-lg font-semibold ">Password Update</h2>
       </div>
-      <div className={` grid grid-row gap-2`}>
+      <div className={`${textColSecondary} grid grid-row gap-2`}>
         <label className="block text-xs sm:text-sm font-medium">
           Update Password
         </label>

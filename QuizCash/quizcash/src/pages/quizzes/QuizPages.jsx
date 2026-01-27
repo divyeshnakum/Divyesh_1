@@ -9,6 +9,9 @@ import {
   hoverColorYel,
   textColPrimary,
   textColSecondary,
+  TextGray,
+  textLabelColor,
+  GreenSuccessCol,
 } from "../../components/ColorLayout";
 
 const difficulties = ["Easy", "Moderate", "Hard"];
@@ -39,7 +42,6 @@ const QuizPages = ({ isOpen, onClose }) => {
   });
 
   const bgHoverColor = "hover:bg-[#F8F8F8]";
-  const textLabelColor = "text-[#2D3748]";
 
   const handleNext = () => setStep((prev) => Math.min(prev + 1, 3));
   const handlePrev = () => setStep((prev) => Math.max(prev - 1, 1));
@@ -75,7 +77,7 @@ const QuizPages = ({ isOpen, onClose }) => {
     <>
       {/* overlay (NO bg-opacity) */}
       <div className="absolute inset-0 bg-transparent " />
-     
+
       <div
         className={`absolute  inset-0 z-50 flex items-center justify-center p-2 sm:p-4`}
       >
@@ -83,22 +85,24 @@ const QuizPages = ({ isOpen, onClose }) => {
           className={`w-full sm:w-11/12 md:w-3/4 lg:w-2/3 xl:w-1/2 ${bgCartColor} rounded-2xl border ${borderColor} p-4 sm:p-6 relative overflow-y-auto max-h-[90vh]`}
         >
           <button
-            className={`absolute top-3 sm:top-4 right-3 sm:right-4 text-gray-500 hover:text-gray-800 cursor-pointer text-xl`}
+            className={`absolute top-3 sm:top-4 right-3 sm:right-4 ${TextGray} cursor-pointer text-xl`}
             onClick={onClose}
           >
             &times;
           </button>
 
           {/* Step Indicator */}
-          <h2 className="text-lg sm:text-xl font-semibold mb-2">
+          <h2
+            className={`text-lg sm:text-xl font-semibold mb-2 ${textColPrimary}`}
+          >
             Create New Quiz
           </h2>
           <h2 className={`${textLabelColor} mb-2 text-sm sm:text-base`}>
             Step {step} of {steps.length} : {steps[step - 1].title}
           </h2>
-          <div className="w-full bg-gray-200 h-1 rounded mb-4 sm:mb-6">
+          <div className={`w-full ${bgColor} h-1 rounded mb-4 sm:mb-6`}>
             <div
-              className={`h-1 bg-yellow-500 rounded transition-all`}
+              className={`h-1 ${baseColorYel} rounded transition-all`}
               style={{ width: `${(step / 3) * 100}%` }}
             />
           </div>
@@ -126,7 +130,7 @@ const QuizPages = ({ isOpen, onClose }) => {
                   onChange={(e) =>
                     setBasicDetails({ ...basicDetails, title: e.target.value })
                   }
-                  className={`w-full border rounded-2xl py-2 px-3 sm:py-2 sm:px-4 mb-4 ${borderColor} text-sm sm:text-base`}
+                  className={`w-full border rounded-2xl py-2 px-3 sm:py-2 sm:px-4 mb-4 ${borderColor} text-sm sm:text-base ${TextGray}`}
                 />
 
                 <label
@@ -142,7 +146,7 @@ const QuizPages = ({ isOpen, onClose }) => {
                       category: e.target.value,
                     })
                   }
-                  className={`w-full border rounded-2xl py-2 px-3 sm:py-2 sm:px-4 mb-4 ${borderColor} text-gray-400 text-sm sm:text-base focus:text-black`}
+                  className={`w-full border rounded-2xl py-2 px-3 sm:py-2 sm:px-4 mb-4 ${borderColor} ${TextGray}  ${bgCartColor} text-sm sm:text-base focus:text-black`}
                 >
                   <option value="" disabled hidden>
                     Select a category
@@ -166,7 +170,7 @@ const QuizPages = ({ isOpen, onClose }) => {
                       }
                       className={`w-full py-2 rounded-2xl cursor-pointer text-sm sm:text-base ${
                         basicDetails.difficulty === level
-                          ? "bg-yellow-500 text-white"
+                          ? `${baseColorYel} ${textColSecondary}`
                           : `${bgColor}`
                       }`}
                     >
@@ -195,7 +199,7 @@ const QuizPages = ({ isOpen, onClose }) => {
                           handleQuestionChange(idx, "question", e.target.value)
                         }
                         placeholder="Enter your question here"
-                        className={`w-full border rounded-2xl py-2 px-3 sm:py-2 sm:px-4 mb-2 ${borderColor} text-sm sm:text-base`}
+                        className={`w-full border rounded-2xl py-2 px-3 sm:py-2 sm:px-4 mb-2 ${TextGray} ${borderColor} text-sm sm:text-base`}
                       />
                     </div>
                     <div>
@@ -208,7 +212,7 @@ const QuizPages = ({ isOpen, onClose }) => {
                       {["A", "B", "C", "D"].map((opt, i) => (
                         <div
                           key={i}
-                          className="flex flex-col sm:flex-row items-center mb-2 gap-2 sm:gap-2"
+                          className={`${TextGray} flex flex-col sm:flex-row items-center mb-2 gap-2 sm:gap-2`}
                         >
                           <input
                             type="radio"
@@ -239,7 +243,7 @@ const QuizPages = ({ isOpen, onClose }) => {
                 ))}
                 <button
                   onClick={addQuestion}
-                  className={`cursor-pointer w-full border border-dashed py-2 rounded-2xl ${bgColor} text-sm sm:text-base`}
+                  className={`cursor-pointer w-full border border-dashed py-2 rounded-2xl ${textColSecondary} ${bgColor} text-sm sm:text-base`}
                 >
                   + Add Another Question
                 </button>
@@ -252,11 +256,17 @@ const QuizPages = ({ isOpen, onClose }) => {
                 <div className="mb-2">
                   {/* Header */}
                   <div className=" py-2">
-                    <h2 className="text-xs sm:text-sm">Rules & Regulations</h2>
+                    <h2 className={` ${textColSecondary} text-xs sm:text-sm`}>
+                      Rules & Regulations
+                    </h2>
                   </div>
-                  <div className="border border-gray-300 rounded-2xl bg-white">
+                  <div
+                    className={`border ${borderColor} rounded-2xl ${bgCartColor}`}
+                  >
                     {/* Content */}
-                    <div className="px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-gray-600 space-y-1">
+                    <div
+                      className={`px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm ${TextGray} space-y-1`}
+                    >
                       <div className="flex">
                         <span className="mr-2 sm:mr-3">e.g.</span>
                         <span>1. Answer quickly to earn more points</span>
@@ -350,7 +360,7 @@ const QuizPages = ({ isOpen, onClose }) => {
                       })
                     }
                     className={`
-      w-full border ${borderColor}
+      w-full border ${borderColor} ${textColSecondary}
       rounded-2xl
       py-2 sm:py-3
       pl-7 sm:pl-10
@@ -382,8 +392,8 @@ const QuizPages = ({ isOpen, onClose }) => {
             px-3 sm:px-4 py-1 sm:py-2
             border rounded-full
             text-xs sm:text-sm
-            transition
-            ${isActive ? "border-gray-700" : "border-gray-300 text-gray-600"}
+            transition ${textColSecondary}
+            ${isActive ? `${borderColor}` : `${borderColor}`}
           `}
                         >
                           {/* Radio Circle */}
@@ -391,11 +401,13 @@ const QuizPages = ({ isOpen, onClose }) => {
                             className={`
               w-3 h-3 sm:w-4 sm:h-4 rounded-full border
               flex items-center justify-center
-              ${isActive ? "border-gray-700" : "border-gray-400"}
+              ${isActive ? `${borderColor}` : `${borderColor}`}
             `}
                           >
                             {isActive && (
-                              <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-gray-700"></span>
+                              <span
+                                className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full ${bgColor}`}
+                              ></span>
                             )}
                           </span>
 
@@ -428,7 +440,7 @@ const QuizPages = ({ isOpen, onClose }) => {
             {step === 1 && (
               <button
                 onClick={onClose}
-                className={`cursor-pointer py-2 sm:py-3 sm:w-28 md:w-36 lg:w-40 border rounded-2xl ${bgHoverColor} ${borderColor} text-sm sm:text-base`}
+                className={`cursor-pointer py-2 sm:py-3 sm:w-28 md:w-36 lg:w-40 border rounded-2xl ${textColSecondary} ${borderColor} text-sm sm:text-base`}
               >
                 Cancel
               </button>
@@ -436,7 +448,7 @@ const QuizPages = ({ isOpen, onClose }) => {
             {step > 1 && (
               <button
                 onClick={handlePrev}
-                className="cursor-pointer py-2 sm:py-3 sm:w-28 md:w-36 lg:w-40 border rounded-lg text-sm sm:text-base"
+                className={`cursor-pointer py-2 sm:py-3 sm:w-28 md:w-36 lg:w-40 border rounded-2xl ${textColSecondary} ${borderColor} text-sm sm:text-base`}
               >
                 Previous
               </button>
@@ -444,14 +456,14 @@ const QuizPages = ({ isOpen, onClose }) => {
             {step < 3 ? (
               <button
                 onClick={handleNext}
-                className={`cursor-pointer sm:w-28 md:w-36 lg:w-40 ${baseColorYel} ${hoverColorYel} border ${borderColor} rounded-2xl py-2 sm:py-3 text-sm sm:text-base`}
+                className={`cursor-pointer sm:w-28 md:w-36 lg:w-40 ${textColSecondary} ${baseColorYel} ${hoverColorYel} border ${borderColor} rounded-2xl py-2 sm:py-3 text-sm sm:text-base`}
               >
                 Next
               </button>
             ) : (
               <button
                 onClick={handleSubmit}
-                className="cursor-pointer py-2 sm:py-3 sm:w-28 md:w-36 lg:w-40 bg-green-500 text-white rounded-lg text-sm sm:text-base"
+                className={`cursor-pointer py-2 sm:py-3 sm:w-28 md:w-36 lg:w-40 ${GreenSuccessCol} ${textColSecondary} rounded-lg text-sm sm:text-base`}
               >
                 Save
               </button>

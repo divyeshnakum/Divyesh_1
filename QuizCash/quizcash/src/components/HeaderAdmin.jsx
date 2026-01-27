@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import { BellIcon } from "@heroicons/react/24/outline";
-import { bgColor, bgCartColor, borderColor, TextGray } from "./ColorLayout";
+import { bgColor, bgCartColor, borderColor, TextGray, textColPrimary } from "./ColorLayout";
 import SearchIcon from "../assets/icons/uil_search.png";
 
 const HeaderAdmin = ({ onHamburgerClick ,onProfileClick,onNotifiClick}) => {
@@ -31,7 +31,7 @@ const HeaderAdmin = ({ onHamburgerClick ,onProfileClick,onNotifiClick}) => {
           <input
             type="text"
             placeholder="Search here"
-            className={`border ${bgCartColor} ${borderColor} rounded-md pl-8 pr-2 py-2 w-full outline-none text-sm`}
+            className={`border ${TextGray} ${bgCartColor} ${borderColor} rounded-md pl-8 pr-2 py-2 w-full outline-none text-sm`}
           />
         </div>
       </div>
@@ -60,11 +60,11 @@ const HeaderAdmin = ({ onHamburgerClick ,onProfileClick,onNotifiClick}) => {
             className={`
       absolute top-10 right-0
       hidden group-hover:block
-      ${bgCartColor} shadow-lg rounded-lg p-2
+      ${bgCartColor}  shadow-lg rounded-lg p-2
       text-xs z-50 
     `}
           >
-            <p className="font-medium">Sakshi Pandit</p>
+            <p className={` ${textColPrimary} font-medium`}>Sakshi Pandit</p>
             <p className={`${TextGray}`}>sasp23@gmail.com</p>
           </div>
         </div>
@@ -80,7 +80,7 @@ const HeaderAdmin = ({ onHamburgerClick ,onProfileClick,onNotifiClick}) => {
             className="w-8 h-8 rounded-full"
           />
           <div>
-            <p className="text-sm font-medium">Sakshi Pandit</p>
+            <p className={` ${textColPrimary} text-sm font-medium`}>Sakshi Pandit</p>
             <p className={`text-xs ${TextGray} `}>sasp23@gmail.com</p>
           </div>
         </div>

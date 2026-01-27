@@ -1,9 +1,11 @@
 import React from "react";
 import OtpBoxUI from "../components/OtpLayout";
 import Header from "../HeaderLogin";
+import { bgColor } from "../components/ColorLayout";
 const ForgotValidation = () => {
   return (
     <>
+    <div className={`${bgColor}`}>
     <Header />
       <OtpBoxUI
         title="Verification"
@@ -13,7 +15,7 @@ const ForgotValidation = () => {
         footTitle="Didn't Receive Code?"
         footSubtitle="Resent"
         showPasswordFields={false} // new prop to show password inputs
-      />
+      /> </div>
     </>
   );
 };

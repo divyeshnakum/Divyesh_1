@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import {
   baseColorYel,
+  bgColor,
   borderColor,
   hoverColorYel,
+  textColPrimary,
+  textColSecondary,
   TextGray,
 } from "../ColorLayout";
 
@@ -44,11 +47,11 @@ const EditProfileModal = ({ isOpen, onClose, onSave, initialData }) => {
       <div className="absolute inset-0 bg-transparent " />
       <div className="absolute inset-0  flex justify-center items-center z-50 p-4">
         <div
-          className={`bg-white border ${borderColor} rounded-2xl w-full max-w-3xl  overflow-hidden`}
+          className={`${bgColor} border ${borderColor} rounded-2xl w-full max-w-3xl  overflow-hidden`}
         >
           {/* Header */}
           <div
-            className={`flex justify-between items-center p-4 border-b ${borderColor}`}
+            className={` ${textColPrimary} flex justify-between items-center p-4 border-b ${borderColor}`}
           >
             <h2 className="text-lg font-semibold">Edit Profile</h2>
             <button className="cursor-pointer" onClick={onClose}>
@@ -79,7 +82,7 @@ const EditProfileModal = ({ isOpen, onClose, onSave, initialData }) => {
             </div>
 
             {/* Right: Form */}
-            <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className={`flex-1 grid grid-cols-1 sm:grid-cols-2 ${textColSecondary} gap-4`}>
               <div className="sm:col-span-2">
                 <label className="block text-sm font-medium mb-1">
                   Full Name
@@ -88,7 +91,7 @@ const EditProfileModal = ({ isOpen, onClose, onSave, initialData }) => {
                   type="text"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  className={`w-full border ${TextGray} ${borderColor} rounded-2xl px-3 py-2`}
+                  className={`w-full border ${borderColor} rounded-2xl px-3 py-2`}
                 />
               </div>
 
@@ -100,7 +103,7 @@ const EditProfileModal = ({ isOpen, onClose, onSave, initialData }) => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className={`w-full border ${TextGray} ${borderColor} rounded-2xl px-3 py-2`}
+                  className={`w-full border ${borderColor} rounded-2xl px-3 py-2`}
                 />
               </div>
 
@@ -112,7 +115,7 @@ const EditProfileModal = ({ isOpen, onClose, onSave, initialData }) => {
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className={`w-full border ${TextGray} ${borderColor} rounded-2xl px-3 py-2`}
+                  className={`w-full border ${borderColor} rounded-2xl px-3 py-2`}
                 />
               </div>
 
@@ -146,10 +149,10 @@ const EditProfileModal = ({ isOpen, onClose, onSave, initialData }) => {
           </div>
 
           {/* Footer */}
-          <div className={`flex justify-end gap-4 p-4 border-t ${borderColor}`}>
+          <div className={`flex justify-end gap-4 p-4 border-t ${textColSecondary} ${borderColor}`}>
             <button
               onClick={onClose}
-              className={`px-4 py-2 rounded-2xl  hover:bg-gray-200 cursor-pointer`}
+              className={`px-4 py-2 rounded-md ${hoverColorYel} cursor-pointer`}
             >
               Cancel
             </button>

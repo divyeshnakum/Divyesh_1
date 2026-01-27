@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 // icons
 import FilterDropDownIcon from "../assets/icons/filter-drop-down-arrow.png";
 import FilterDropUpIcon from "../assets/icons/filter-drop-up-arrow.png";
-import { borderColor, bgCartColor, bgColor } from "./ColorLayout";
+import { borderColor, bgCartColor, bgColor, textColSecondary } from "./ColorLayout";
 
 const Dropdown = ({open,setOpen}) => {
   const [value, setValue] = useState("Verification status");
@@ -28,7 +28,7 @@ const Dropdown = ({open,setOpen}) => {
       <button
         onClick={() => setOpen(!open)}
         className={`flex items-center sm:justify-between  sm:w-44 w-32 ml-2
-                   px-2 sm:px-4 py-2 border rounded-lg sm:text-sm text-[10px] ${borderColor} ${bgCartColor} `}
+                   px-2 sm:px-4 py-2 border rounded-lg sm:text-sm text-[10px] ${textColSecondary} ${borderColor} ${bgCartColor} `}
       >
       {value}
         <img src={FilterDropDownIcon} className="w-6 h-6" />
@@ -49,7 +49,7 @@ const Dropdown = ({open,setOpen}) => {
                   setValue(item);
                   setOpen(false);
                 }}
-                className={`w-full text-sm px-3 py-2 rounded-md border my-1.5 ${bgCartColor} text-center`}
+                className={`w-full text-sm px-3 py-2 rounded-md border my-1.5 ${textColSecondary} ${bgCartColor} text-center`}
               >
                 {item}
               </button>
