@@ -335,21 +335,9 @@ const QuizPages = ({ isOpen, onClose }) => {
                 >
                   Winner Amount
                 </label>
-                <div className="relative w-full mb-4">
-                  {/* Rupee Icon */}
-                  <img
-                    src={rupeeIcon}
-                    alt="₹"
-                    className="
-      absolute left-2 sm:left-3
-      top-1/2
-      -translate-y-1/2
-      w-3 h-3 sm:w-4 sm:h-4
-      pointer-events-none
-    "
-                  />
-
+                <div className={`relative w-full mb-4 ${textColSecondary}`}>
                   {/* Input */}
+                  <span className={`absolute left-4 top-1/2 -translate-y-1/2 text-xl`}>₹</span>
                   <input
                     type="number"
                     value={importantInfo.prize}
@@ -360,7 +348,7 @@ const QuizPages = ({ isOpen, onClose }) => {
                       })
                     }
                     className={`
-      w-full border ${borderColor} ${textColSecondary}
+      w-full border ${borderColor} 
       rounded-2xl
       py-2 sm:py-3
       pl-7 sm:pl-10

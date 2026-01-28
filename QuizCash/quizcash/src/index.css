@@ -41,7 +41,7 @@ body {
   /* Text colors */
   --text-primary: #ffffff; /* FULL white */
   --text-secondary: #ffffff; /* Light gray for secondary text */
-  --text-gray: #dfdfdf; /* keep muted gray if needed */
+  --text-gray: #ababab; /* keep muted gray if needed */
 
   /* Backgrounds */
   --bg-main: #1b1b1c;

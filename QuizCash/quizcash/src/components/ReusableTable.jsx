@@ -1,11 +1,12 @@
 import { useState } from "react";
 // Icons
-import { FiSearch,  FiRefreshCw ,FiFilter } from "react-icons/fi";
-import { FaTrash, FaSort ,FaPencilAlt } from "react-icons/fa";
+import { FiSearch, FiRefreshCw, FiFilter } from "react-icons/fi";
+import { FaTrash, FaSort, FaPencilAlt } from "react-icons/fa";
 import {
   bgCartColor,
   bgColor,
   borderColor,
+  textColPrimary,
   textColSecondary,
 } from "./ColorLayout";
 import Dropdown from "./Dropdown";
@@ -19,6 +20,11 @@ const ReusableTable = ({
   showFilter = true,
   isQuizzesPage = true,
   onSecondColumnClick,
+  showLimitedRows = false,
+  ViewStudent,
+  showDashboardOn = false,
+  showPagination=true,
+  limitRows = 2, 
 }) => {
   const [openRow, setOpenRow] = useState(null);
   const hoverbg = "hover:bg-[#F8F8F8]";
@@ -53,7 +59,9 @@ const ReusableTable = ({
         {(showSearch || showFilter) && (
           <div className="flex h-full items-center justify-between pb-4 mr-6 sm:mr-0 ">
             {showSearch && (
-              <div className={`relative w-full sm:max-w-sm ${textColSecondary}`}>
+              <div
+                className={`relative w-full sm:max-w-sm ${textColSecondary}`}
+              >
                 <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" />
                 <input
                   placeholder="Search here"
@@ -104,11 +112,19 @@ const ReusableTable = ({
                   className={`flex items-center justify-center sm:w-20 sm:h-10 h-8 w-8
                px-2 py-1 sm:px-1 sm:py-2 border rounded-lg text-sm cursor-pointer ${textColSecondary} ${borderColor}`}
                 >
-                  <FiRefreshCw  className="w-5 h-5" />
+                  <FiRefreshCw className="w-5 h-5" />
                 </button>
               </div>
             )}
           </div>
+        )}
+        {showDashboardOn &&(
+          <div className={`flex items-center justify-between`}>
+            <span className={`sm:text-xl text-md ${textColPrimary}`}>Recently joined Student</span>
+            <button className={`text-sx sm:text-md  ${textColSecondary} cursor-pointer hover:underline`}
+            onClick={ViewStudent}>
+            View All
+          </button></div>
         )}
         {/* ✅ RESPONSIVE FIX */}
         <div
@@ -177,13 +193,13 @@ const ReusableTable = ({
                   <td className={`  ${hoverText} rounded-r-2xl `}>
                     <div className="relative flex gap-3">
                       <button
-                        className={`border p-1 ${borderColor} rounded-md`}
+                        className={`border p-1 ${borderColor} rounded-md cursor-pointer`}
                       >
                         <FaTrash className="w-5 h-5" />
                       </button>
 
                       <button
-                        className={`border p-1 ${borderColor} rounded-md`}
+                        className={`border p-1 ${borderColor} rounded-md cursor-pointer`}
                         // ⭐ TOGGLE menu per row
                         onClick={(e) => {
                           e.stopPropagation();
@@ -200,7 +216,8 @@ const ReusableTable = ({
               ))}
             </tbody>
           </table>
-          <Pagination data={data} />
+{showPagination &&(
+          <Pagination data={data} />)}
         </div>
         {/* Pagination  */}
       </div>

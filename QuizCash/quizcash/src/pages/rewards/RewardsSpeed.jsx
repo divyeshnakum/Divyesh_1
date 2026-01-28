@@ -29,7 +29,7 @@ export default function RewardSpend() {
 
           {/* Dropdown */}
           <div>
-            <select className={`border ${borderColor} ${textColSecondary} ${bgCartColor} rounded-lg px-3 py-2 text-sm`}>
+            <select className={`border ${borderColor} ${textColSecondary} ${bgCartColor} cursor-pointer rounded-lg px-3 py-2 text-sm`}>
               <option hidden>This Month</option>
               <option>This week</option>
               <option>Today </option>

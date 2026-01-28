@@ -21,7 +21,7 @@ import SettingsPage from "./setting/SettingsPage";
 import NotificationForm from "./adminProfile/NotificationForm";
 import AdminProfilePage from "./adminProfile/AdminProfilePage";
 import QuizPages from "./quizzes/QuizPages";
-
+import ReusableTable from "../components/ReusableTable";
 const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -66,7 +66,34 @@ const Dashboard = () => {
     { title: "Coding Basics", attempts: 103, status: "Expired" },
     { title: "C++ Aptitude", attempts: 97, status: "Draft" },
   ];
-
+  const studColumns = [
+    { key: "name", label: "Name" },
+    { key: "college", label: "College" },
+    { key: "dept", label: "Dept" },
+    { key: "date", label: "Date" },
+    { key: "referral", label: "Referral" },
+    { key: "status", label: "Status" },
+  ];
+  const studentData = [
+    {
+      id: 1,
+      name: "Sakshi Pande",
+      college: "Ganpat University",
+      dept: "Computer science",
+      date: "Jan 20, 2025",
+      referral: "Yes",
+      status: "Rejected",
+    },
+    {
+      id: 2,
+      name: "Jignya Mishra",
+      college: "Parul University",
+      dept: "Electrical Engineering",
+      date: "Jun 12, 2026",
+      referral: "No",
+      status: "Verified",
+    },
+  ];
   // ✅ Status Colors
   const statusColorMap = {
     Live: "text-red-500 border-red-600 cursor-pointer w-25",
@@ -93,7 +120,7 @@ const Dashboard = () => {
               onClick={() => setSidebarOpen(false)}
             ></div>
             <Sidebar
-              className="fixed inset-y-0 left-0 w-64 bg-white z-50"
+              className={`fixed inset-y-0 left-0 w-64 ${bgCartColor} z-50`}
               setSidebarOpen={setSidebarOpen}
               activeIndex={activeIndex}
               setActiveIndex={setActiveIndex}
@@ -128,12 +155,27 @@ const Dashboard = () => {
                     <GraphCard title="Student Activity Graph" />
                     <ReusableTableCard
                       title="Recent Quiz"
-                      viewAllLink="/quizzes"
+                      viewAllLink
+                      onViewAllClick={() =>
+                        setActiveIndex(menuNames.indexOf("Quizzes"))
+                      }
                       columns={columns}
                       data={quizzes}
                       statusColorMap={statusColorMap}
                     />
-                  </div>
+                      </div>
+                    <ReusableTable
+                      data={studentData}
+                      columns={studColumns}
+                      showSearch={false}
+                      showFilter={false}
+                      isQuizzesPage={false}
+                      showDashboardOn={true}
+                      ViewStudent={() =>
+                        setActiveIndex(menuNames.indexOf("Students"))
+                      }
+                      showPagination={false}
+                    />
                 </>
               )}
 
@@ -153,9 +195,7 @@ const Dashboard = () => {
                 onClose={closeNotificationModal}
               />
             )}
-            {isQuizOpen && (
-              <QuizPages isOpen={true} onClose={closeQuizModal} />
-            )}
+            {isQuizOpen && <QuizPages isOpen={true} onClose={closeQuizModal} />}
           </div>
         </div>
       </div>

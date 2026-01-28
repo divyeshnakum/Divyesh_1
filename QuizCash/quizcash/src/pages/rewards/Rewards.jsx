@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import DashboardStats from "../../components/DashboardStats";
 import Blog from "../../components/Blog";
 import ReusableTable from "../../components/ReusableTable";
-import ExportIcon from "../../assets/icons/export-icon.png";
+import { ArrowUpTrayIcon } from "@heroicons/react/24/outline";
+import { FiSearch } from "react-icons/fi";
 import {
   bgColor,
   bgCartColor,
@@ -14,7 +15,6 @@ import {
   textColSecondary,
   TextGray,
 } from "../../components/ColorLayout";
-import SearchIcon from "../../assets/icons/uil_search.png";
 import RewardSpend from "./RewardsSpeed";
 
 const Rewards = () => {
@@ -22,9 +22,6 @@ const Rewards = () => {
   const [openModal, setOpenModal] = useState(false);
   const [activeDate, setActiveDate] = useState("month");
 
-  const BaseTextYel = "text-[#FFB800]";
-  const HoverTextYel = "hover:text-[#E0A200]";
-  const TextGray = "text-[#4B5563]";
   const data = [
     {
       id: 1,
@@ -66,13 +63,27 @@ const Rewards = () => {
 
   /* 🔥 NEW: Table column configuration */
   const tableColumns = [
-    { label: "USER", key: "user", type: "user", className: `font-bold ${textColSecondary}` },
+    {
+      label: "USER",
+      key: "user",
+      type: "user",
+      className: `font-bold ${textColSecondary}`,
+    },
     { label: "QUIZ NAME", key: "quizName", className: `${TextGray}` },
-    { label: "REWARD AMOUNT", key: "rewardAmount", className: `font-bold ${textColSecondary}` },
+    {
+      label: "REWARD AMOUNT",
+      key: "rewardAmount",
+      className: `font-bold ${textColSecondary}`,
+    },
     { label: "UPI ID", key: "upiId", className: `${TextGray}` },
-    { label: "STATUS", key: "status", type: "status", className: `${textColSecondary}` },
+    {
+      label: "STATUS",
+      key: "status",
+      type: "status",
+      className: `${textColSecondary}`,
+    },
     { label: "DATE", key: "date", className: `${TextGray}` },
-    { label: "ACTION", type: "action",className: `${textColSecondary}` },
+    { label: "ACTION", type: "action", className: `${textColSecondary}` },
   ];
 
   const statusColors = {
@@ -144,77 +155,74 @@ const Rewards = () => {
               <div
                 className={` border rounded-2xl p-4 ${borderColor} ${bgCartColor} "`}
               >
-                <div className="flex flex-col  md:flex-row md:justify-between mb-4 gap-4">
+                <div className={`${textColPrimary} flex flex-col  md:flex-row md:justify-between mb-4 gap-4`}>
                   <div className="w-fit flex items-center ">
-                    <img
-                      src={SearchIcon}
-                      className="absolute text-center justify-center ml-3 w-4 h-4"
-                    />
+                    <FiSearch className="absolute text-center justify-center ml-3 w-4 h-4" />
                     <input
                       placeholder="Search here"
-                      className={`border ${bgColor} ${TextGray} ${borderColor} rounded-3xl pl-8 pr-4 py-2 w-full text-sm`}
+                      className={`border ${bgColor} ${borderColor} rounded-3xl pl-8 pr-4 py-2 w-full text-sm`}
                     />
                   </div>
                   <div className="flex flex-wrap text-xs sm:text-sm gap-2">
                     <div
                       className={`flex flex-row gap-2 sm:gap-4 border  px-1 sm:px-2 sm:py-1 py-0.5 ${borderColor} rounded-2xl ${bgColor} w-fit`}
                     >
-                        <button
-                          onClick={() => setActiveDate("today")}
-                          className={`flex-1 sm:flex-none text-center ${textColSecondary} px-1 sm:px-2 py-0 sm:py-1 transition-colors duration-200 cursor-pointer ${
-                            activeDate === "today"
-                              ? ` ${bgCartColor} border-transparent rounded-xl`
-                              : ``
-                          }`}
-                        >
-                          Today
-                        </button>
+                      <button
+                        onClick={() => setActiveDate("today")}
+                        className={`flex-1 sm:flex-none text-center px-1 sm:px-2 py-0 sm:py-1 transition-colors duration-200 cursor-pointer ${
+                          activeDate === "today"
+                            ? ` ${bgCartColor} border-transparent rounded-xl`
+                            : ``
+                        }`}
+                      >
+                        Today
+                      </button>
 
-                        <button
-                          onClick={() => setActiveDate("week")}
-                          className={`flex-1 sm:flex-none text-center px-1 sm:px-2 py-0 ${textColSecondary} sm:py-1 transition-colors duration-200 cursor-pointer ${
-                            activeDate === "week"
-                              ? ` ${bgCartColor} border-transparent rounded-xl`
-                              : ``
-                          }`}
-                        >
-                          This Week
-                        </button>
+                      <button
+                        onClick={() => setActiveDate("week")}
+                        className={`flex-1 sm:flex-none text-center px-1 sm:px-2 py-0 sm:py-1 transition-colors duration-200 cursor-pointer ${
+                          activeDate === "week"
+                            ? ` ${bgCartColor} border-transparent rounded-xl`
+                            : ``
+                        }`}
+                      >
+                        This Week
+                      </button>
 
-                        <button
-                          onClick={() => setActiveDate("month")}
-                          className={`flex-1 sm:flex-none text-center px-1 sm:px-2 py-0 sm:py-1 transition-colors ${textColSecondary} duration-200 cursor-pointer ${
-                            activeDate === "month"
-                              ? ` ${bgCartColor} border-transparent rounded-xl`
-                              : ``
-                          }`}
-                        >
-                          This Month
-                        </button>
-                      </div>
-                      <div
-                        className={`flex gap-4 border px-2 py-1 ${borderColor} rounded-2xl ${bgColor} `}
+                      <button
+                        onClick={() => setActiveDate("month")}
+                        className={`flex-1 sm:flex-none text-center px-1 sm:px-2 py-0 sm:py-1 transition-colors  duration-200 cursor-pointer ${
+                          activeDate === "month"
+                            ? ` ${bgCartColor} border-transparent rounded-xl`
+                            : ``
+                        }`}
                       >
-                        <button className={`${textColSecondary}`}>Custom Range</button>
-                      </div>
-                      <select
-                        className={` border px-2 py-1 ${textColSecondary} ${borderColor} rounded-2xl ${bgColor} `}
-                      >
-                        <option hidden>Status: All</option>
-                        <option>Paid</option>
-                        <option>Pending</option>
-                        <option>Failed</option>
-                      </select>
-                      <div
-                        className={`flex gap-2 px-2 items-center py-2 ${baseColorYel} ${textColPrimary} rounded-2xl ${hoverColorYel}`}
-                      >
-                        <img
-                          src={ExportIcon}
-                          alt=""
-                          className="w-5 h-6 text-center"
-                        />
-                        <button className={`${textColSecondary}`}>Export to CSV</button>
-                      </div>
+                        This Month
+                      </button>
+                    </div>
+                    <div
+                      className={`flex gap-4 border px-2 py-1 ${borderColor} rounded-2xl ${bgColor} `}
+                    >
+                      <button className={`cursor-pointer`}>
+                        Custom Range
+                      </button>
+                    </div>
+                    <select
+                      className={` border px-2 py-1  ${borderColor} cursor-pointer rounded-2xl ${bgColor} `}
+                    >
+                      <option hidden>Status: All</option>
+                      <option>Paid</option>
+                      <option>Pending</option>
+                      <option>Failed</option>
+                    </select>
+                    <div
+                      className={`flex gap-2 px-2 items-center py-2 cursor-pointer ${baseColorYel}  rounded-2xl ${hoverColorYel}`}
+                    >
+                      <ArrowUpTrayIcon className="w-5 h-6 text-center" />
+                      <button className={`cursor-pointer`}>
+                        Export to CSV
+                      </button>
+                    </div>
                   </div>
                 </div>
 

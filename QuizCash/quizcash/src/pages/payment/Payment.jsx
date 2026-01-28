@@ -1,6 +1,6 @@
 import Blog from "../../components/Blog";
 import DashboardStats from "../../components/DashboardStats";
-import SearchIcon from "../../assets/icons/uil_search.png";
+import { FiSearch } from "react-icons/fi";
 import { bgCartColor, borderColor, textColPrimary, textColSecondary } from "../../components/ColorLayout";
 
 const Payment = () => {
@@ -26,15 +26,14 @@ const Payment = () => {
 
           {/* Filters */}
           <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="relative w-full sm:max-w-2xl">
-              <img
-                src={SearchIcon}
+            <div className={`${textColSecondary} relative w-full sm:max-w-2xl`}>
+              <FiSearch
                 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 "
               />
               <input
                 type="text"
                 placeholder="Search User / UPI / Payment ID"
-                className={`w-full md:w-1/2 px-4 py-2 border rounded-lg ${borderColor} pl-8 text-sm outline-none ${textColSecondary}`}
+                className={`w-full md:w-1/2 px-4 py-2 border rounded-lg ${borderColor} pl-8 text-sm outline-none`}
               />
             </div>
 

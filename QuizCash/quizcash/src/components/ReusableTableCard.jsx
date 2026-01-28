@@ -7,6 +7,7 @@ const ReusableTableCard = ({
   columns,
   data,
   statusColorMap,
+  onViewAllClick,
 }) => {
   const tdClass = "px-2 py-3";
 
@@ -19,12 +20,12 @@ const ReusableTableCard = ({
         </h3>
 
         {viewAllLink && (
-          <a
-            href={viewAllLink}
-            className={`text-sm sm:text-base font-medium ${textColSecondary} hover:underline`}
+          <button
+            onClick={onViewAllClick}
+            className={`text-sm sm:text-base font-medium ${textColSecondary} hover:underline cursor-pointer`}
           >
             View all
-          </a>
+          </button>
         )}
       </div>
 

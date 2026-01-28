@@ -226,7 +226,7 @@ const StudentProfile = ({ student, onBack }) => {
                 Sakshi has been a verified UPI
               </p>
               <p
-                className={`border rounded-xl px-2 py-1 text-xs overflow-hidden text-ellipsis whitespace-nowrap `}
+                className={` ${bgColor} ${textColSecondary} border rounded-xl px-2 py-1 text-xs overflow-hidden text-ellipsis whitespace-nowrap `}
               >
                 sksdsds8943754@icicic.pay
               </p>
