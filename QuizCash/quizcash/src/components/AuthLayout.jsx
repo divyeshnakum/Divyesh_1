@@ -2,8 +2,8 @@ import { bgColor } from "./ColorLayout";
 
 const AuthLayout = ({ children, image }) => {
   return (
-    <div className={`${bgColor} max-h-screen  pb-20 flex items-center justify-center 
-`}>
+    <div className={`${bgColor} max-h-screen overflow-hidden flex items-center justify-center 
+`} style={{ height: "calc(100vh - 152px)" }}>
       <div className={`w-full max-w-6xl rounded-xl grid grid-cols-1 lg:grid-cols-2 overflow-hidden 0 md:px-16 lg:px-0 `}>
         
         {/* Left Form */}

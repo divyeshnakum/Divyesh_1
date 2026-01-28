@@ -1,11 +1,8 @@
 // StudentProfile.jsx
 import React from "react";
-import EmailIcon from "../../assets/icons/email-icon.png";
-import CallIcon from "../../assets/icons/call-icon.png";
 import ImgStudentPro4 from "../../assets/images/image-student-p4.png";
-import BackIcon from "../../assets/icons/back-arrow-icon.png";
 import StudentPayment from "../../assets/images/student-payment-img.png";
-
+import { ChevronLeftIcon,Phone,Mail } from "lucide-react";
 import {
   bgCartColor,
   bgColor,
@@ -13,6 +10,7 @@ import {
   borderColor,
   textColSecondary,
   textColPrimary,
+  TextGray,
 } from "../../components/ColorLayout";
 import ReusableTableCard from "../../components/ReusableTableCard";
 import Blog from "../../components/Blog";
@@ -85,10 +83,8 @@ const StudentProfile = ({ student, onBack }) => {
         className={` ${textColPrimary} font-semibold flex items-center group mb-4 `}
       >
         <span>
-          <img
-            src={BackIcon}
-            alt=""
-            className="h-4 w-2.5 group-hover:w-3 group-hover:h-4.5"
+          <ChevronLeftIcon
+            className="h-5 w-5 group-hover:w-6 group-hover:h-6"
           />
         </span>
         <span className={`${textColPrimary} ml-2    `}>
@@ -102,7 +98,7 @@ const StudentProfile = ({ student, onBack }) => {
       >
         <div className="flex items-center pl-4 gap-8">
           <div
-            className={`w-20 h-20 rounded-full ${bggray}  flex items-center justify-center text-2xl font-bold text-gray-700`}
+            className={`w-20 h-20 rounded-full ${bggray}  flex items-center justify-center text-2xl font-bold ${TextGray}`}
           >
             {student.image ? (
               <img
@@ -134,17 +130,17 @@ const StudentProfile = ({ student, onBack }) => {
               className={`flex flex-col sm:flex-row sm:items-center gap-4 text-sm mt-2 ${textColSecondary}`}
             >
               <span className="flex items-center gap-2">
-                <img src={EmailIcon} className="w-4 h-4" /> {student.email}
+                <Mail className="w-4 h-4" /> {student.email}
               </span>
               <span className="flex items-center gap-2">
-                <img src={CallIcon} className="w-4 h-4" /> {student.phone}
+                <Phone className="w-4 h-4" /> {student.phone}
               </span>
             </div>
           </div>
         </div>
         <div className="flex items-start justify-start">
           <span
-            className={`px-3 py-1 ${GreenSuccessCol} rounded-full font-medium`}
+            className={`px-3 py-1 ${GreenSuccessCol} cursor-pointer rounded-full font-medium`}
           >
             {student.status}
           </span>
@@ -184,7 +180,7 @@ const StudentProfile = ({ student, onBack }) => {
               className="w-full h-full px-5 pt-2 sm:px-2 sm:pt-8 mb-2"
             />
             <div className={`w-full sm:px-6`}>
-              <p className={`text-gray-500 text-xs sm:text-lg text-center pb-4`}>
+              <p className={`${TextGray} text-xs sm:text-lg text-center pb-4`}>
                 Ooops! Currently no have any complaint
               </p>
             </div>
@@ -205,7 +201,7 @@ const StudentProfile = ({ student, onBack }) => {
               alt="No complaints"
               className="w-full h-full py-2 px-5 sm:px-28"
             />
-            <p className={`text-gray-500 text-xs sm:text-lg text-center pb-1`}>
+            <p className={`${TextGray} text-xs sm:text-lg text-center pb-1`}>
               Ooops! Currently no have any complaint
             </p>
           </div>

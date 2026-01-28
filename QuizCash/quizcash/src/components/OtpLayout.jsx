@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import showIcon from "../assets/icons/fluent_eye-12-filled.png"
+import showIcon from "../assets/icons/fluent_eye-12-filled.png";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 import logo_img from "../assets/images/Rectangle-1.png";
 import {
   baseColorYel,
@@ -17,6 +18,7 @@ const OtpBoxUI = ({
   buttonText,
   timer = "00:45",
   footTitle,
+  ButtonClick,
   footSubtitle,
   showPasswordFields = false, // new prop to show password inputs
   onSubmit, // function called on button click
@@ -25,31 +27,15 @@ const OtpBoxUI = ({
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [showNewPassword, setShowNewPassword] = useState(false);
-
-
-//   const handleButtonClick = () => {
-//     if (showPasswordFields) {
-//       // Password validation
-//       if (!newPassword || !confirmPassword) {
-//         setError("Both fields are required");
-//         return;
-//       }
-//       if (newPassword !== confirmPassword) {
-//         setError("Passwords do not match");
-//         return;
-//       }
-//       setError("");
-//       onSubmit && onSubmit({ newPassword, confirmPassword });
-//     } else {
-//       // For OTP use-case
-//       onSubmit && onSubmit();
-//     }
-//   };
+  const [showEye, setShoeEye] = useState(true);
 
   return (
-    <div className="flex justify-center items-center w-full py-24 px-4">
+    <div
+      className={`flex max-h-screen justify-center items-center w-full py-24 px-4 ${bgColor}`}
+      style={{ height: "calc(100vh - 152px)" }}
+    >
       <div
-        className={`w-full max-w-[360px] ${bgCartColor} rounded-2xl ${borderColor}  shadow-sm px-6 py-7 text-center`}
+        className={`w-full max-w-[360px]  rounded-2xl ${borderColor} ${bgCartColor} shadow-sm px-6 py-7 text-center`}
       >
         {/* Logo */}
         <div className="flex justify-center mb-4">
@@ -63,21 +49,22 @@ const OtpBoxUI = ({
         {/* Conditional Inputs */}
         {showPasswordFields ? (
           <>
-            <div className="flex flex-col gap-3 mb-4">
-              <div className="relative w-full">
+            <div className={`flex flex-col gap-3 mb-4 ${textColSecondary}`}>
+              <div className={` relative w-full`}>
                 <input
                   type={showNewPassword ? "text" : "password"}
                   placeholder="Enter New Password"
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
-                  className={`w-full rounded-2xl border ${borderColor} px-4 py-2 text-left text-sm ${textColSecondary} bg-white focus:outline-none`}
+                  className={`w-full rounded-2xl border ${borderColor} px-4 py-2 text-left text-sm  ${bgColor}`}
                 />
-                <img
-                  src={showIcon}
-                  alt="Show password"
+                <button
                   className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 cursor-pointer"
-                  onClick={() => setShowNewPassword(!showNewPassword)}
-                />
+                  onClick={() => setShoeEye(!showEye)}
+                >
+                  {" "}
+                  {showEye ? <FiEyeOff /> : <FiEye />}
+                </button>
               </div>
               <div className="relative w-full">
                 <input
@@ -85,14 +72,15 @@ const OtpBoxUI = ({
                   placeholder="Confirm Password"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  className={`w-full rounded-2xl border ${borderColor} px-4 py-2 text-left text-sm ${textColSecondary} bg-white focus:outline-none`}
+                  className={`w-full rounded-2xl border ${borderColor} px-4 py-2 text-left text-sm ${bgColor}`}
                 />
-                <img
-                  src={showIcon}
-                  alt="Show password"
+                <button
                   className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 cursor-pointer"
-                  onClick={() => setShowNewPassword(!showNewPassword)}
-                />
+                  onClick={() => setShoeEye(!showEye)}
+                >
+                  {" "}
+                  {showEye ? <FiEyeOff /> : <FiEye />}
+                </button>
               </div>
             </div>
             <p className={`text-xs mb-3 ${textColSecondary}`}>{footTitle} </p>
@@ -104,8 +92,7 @@ const OtpBoxUI = ({
                 key={index}
                 type="text"
                 placeholder={item}
-                disabled
-                className={`w-11 h-11 sm:w-12 sm:h-12 rounded-lg border ${borderColor} text-center text-lg font-semibold ${textColSecondary} bg-white focus:outline-none`}
+                className={`w-11 h-11 sm:w-12 sm:h-12 rounded-lg border ${borderColor} text-center text-lg font-semibold ${textColSecondary} ${bgColor} `}
               />
             ))}
           </div>
@@ -129,7 +116,8 @@ const OtpBoxUI = ({
 
         {/* Button */}
         <button
-          className={` ${baseColorYel} ${hoverColorYel}  transition text-black font-semibold py-2 px-24 rounded-xl`}
+          onClick={ButtonClick}
+          className={` ${baseColorYel} ${hoverColorYel}  transition ${textColSecondary} font-semibold py-2 px-24 rounded-xl`}
         >
           {buttonText}
         </button>

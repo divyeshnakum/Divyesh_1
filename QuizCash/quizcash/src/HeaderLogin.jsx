@@ -43,7 +43,7 @@ const Header = ({ showAuthButtons = true, onSignIn, onSignUp }) => {
                 {/* 📱 BURGER ICON */}
                 {showAuthButtons && (
                   <button
-                    className="md:hidden text-2xl"
+                    className={`md:hidden text-2xl border rounded-md p-1.5 ${borderColor} ${bgCartColor}`}
                     onClick={() => setMenuOpen(!menuOpen)}
                   >
                     ☰

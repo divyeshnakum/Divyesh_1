@@ -1,14 +1,7 @@
 import { useState } from "react";
 // Icons
-import SearchIcon from "../assets/icons/uil_search.png";
-import DeleteIcon from "../assets/icons/delete-icon.png";
-import EditIcon from "../assets/icons/edit-icon.png";
-import CrossIcon from "../assets/icons/cross-icon.png";
-import RightIcon from "../assets/icons/right-icon.png";
-import FilterIcon from "../assets/icons/filter-icon.png";
-import FilterSortnIcon from "../assets/icons/filter-sort-icon.png";
-import FilterReloadIcon from "../assets/icons/filter-reload-icon.png";
-
+import { FiSearch,  FiRefreshCw ,FiFilter } from "react-icons/fi";
+import { FaTrash, FaSort ,FaPencilAlt } from "react-icons/fa";
 import {
   bgCartColor,
   bgColor,
@@ -60,14 +53,11 @@ const ReusableTable = ({
         {(showSearch || showFilter) && (
           <div className="flex h-full items-center justify-between pb-4 mr-6 sm:mr-0 ">
             {showSearch && (
-              <div className="relative w-full sm:max-w-sm">
-                <img
-                  src={SearchIcon}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4"
-                />
+              <div className={`relative w-full sm:max-w-sm ${textColSecondary}`}>
+                <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" />
                 <input
                   placeholder="Search here"
-                  className={`border ${bgCartColor} ${borderColor} ${textColSecondary} rounded-md pl-8 pr-2 py-2 w-full text-sm`}
+                  className={`border ${bgCartColor} ${borderColor}  rounded-md pl-8 pr-2 py-2 w-full text-sm`}
                 />
               </div>
             )}
@@ -91,9 +81,10 @@ const ReusableTable = ({
                 <button
                   title="Filter"
                   className={`flex items-center justify-center sm:w-20 sm:h-10 h-8 w-8
-               px-2 py-1 sm:px-1 sm:py-2 border rounded-lg text-sm ${textColSecondary} ${borderColor}`}
+               px-2 py-1 sm:px-1 sm:py-2 border rounded-lg text-sm cursor-pointer ${textColSecondary} ${borderColor}`}
                 >
-                  <img src={FilterIcon} className="w-5 h-5" />
+                  <FiFilter className="w-5 h-5" />
+
                   <span className="hidden sm:inline ml-2">Filter</span>
                 </button>
 
@@ -101,9 +92,9 @@ const ReusableTable = ({
                 <button
                   title="Sort"
                   className={`flex items-center justify-center sm:w-20 sm:h-10 h-8 w-8
-               px-2 py-1 sm:px-1 sm:py-2 border rounded-lg text-sm ${textColSecondary} ${borderColor}`}
+               px-2 py-1 sm:px-1 sm:py-2 border rounded-lg text-sm cursor-pointer ${textColSecondary} ${borderColor}`}
                 >
-                  <img src={FilterSortnIcon} className="w-5 h-5" />
+                  <FaSort className="w-5 h-5" />
                   <span className="hidden sm:inline ml-2">Sort</span>
                 </button>
 
@@ -111,9 +102,9 @@ const ReusableTable = ({
                 <button
                   title="Refresh"
                   className={`flex items-center justify-center sm:w-20 sm:h-10 h-8 w-8
-               px-2 py-1 sm:px-1 sm:py-2 border rounded-lg text-sm ${textColSecondary} ${borderColor}`}
+               px-2 py-1 sm:px-1 sm:py-2 border rounded-lg text-sm cursor-pointer ${textColSecondary} ${borderColor}`}
                 >
-                  <img src={FilterReloadIcon} className="w-5 h-5" />
+                  <FiRefreshCw  className="w-5 h-5" />
                 </button>
               </div>
             )}
@@ -188,7 +179,7 @@ const ReusableTable = ({
                       <button
                         className={`border p-1 ${borderColor} rounded-md`}
                       >
-                        <img src={DeleteIcon} className="w-5 h-5" />
+                        <FaTrash className="w-5 h-5" />
                       </button>
 
                       <button
@@ -199,7 +190,7 @@ const ReusableTable = ({
                           setOpenRow(openRow === item.id ? null : item.id);
                         }}
                       >
-                        <img src={EditIcon} className="w-5 h-5" />
+                        <FaPencilAlt className="w-5 h-5" />
                       </button>
 
                       <RowActionMenu isOpen={openRow === item.id} />

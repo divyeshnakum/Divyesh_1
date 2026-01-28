@@ -168,9 +168,9 @@ const QuizPages = ({ isOpen, onClose }) => {
                       onClick={() =>
                         setBasicDetails({ ...basicDetails, difficulty: level })
                       }
-                      className={`w-full py-2 rounded-2xl cursor-pointer text-sm sm:text-base ${
+                      className={`w-full py-2 ${textColSecondary} rounded-2xl cursor-pointer text-sm sm:text-base ${
                         basicDetails.difficulty === level
-                          ? `${baseColorYel} ${textColSecondary}`
+                          ? `${baseColorYel} `
                           : `${bgColor}`
                       }`}
                     >

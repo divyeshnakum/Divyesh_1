@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import { BellIcon } from "@heroicons/react/24/outline";
-import { bgColor, bgCartColor, borderColor, TextGray, textColPrimary } from "./ColorLayout";
-import SearchIcon from "../assets/icons/uil_search.png";
+import { FiSearch } from "react-icons/fi";
+import { bgColor, bgCartColor, borderColor, TextGray, textColPrimary, textColSecondary } from "./ColorLayout";
 
 const HeaderAdmin = ({ onHamburgerClick ,onProfileClick,onNotifiClick}) => {
      const [open, setOpen] = useState(false);
@@ -14,24 +14,22 @@ const HeaderAdmin = ({ onHamburgerClick ,onProfileClick,onNotifiClick}) => {
       <div className="flex items-center gap-2 sm:gap-4 flex-1">
         {/* Hamburger (mobile only) */}
         <button
-          className="md:hidden p-2 rounded-md bg-gray-200"
+          className={`md:hidden p-1.5 rounded-md border ${borderColor} ${bgCartColor}`}
           onClick={onHamburgerClick}
         >
           ☰
         </button>
 
         {/* Search */}
-        <div className="relative w-full max-w-[14rem] sm:max-w-sm">
-          <img
-            src={SearchIcon}
-            alt="search"
+        <div className={`relative w-full max-w-[14rem] sm:max-w-sm ${textColSecondary}`}>
+          <FiSearch
             className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4"
           />
 
           <input
             type="text"
             placeholder="Search here"
-            className={`border ${TextGray} ${bgCartColor} ${borderColor} rounded-md pl-8 pr-2 py-2 w-full outline-none text-sm`}
+            className={`border ${bgCartColor} ${borderColor} rounded-md pl-8 pr-2 py-2 w-full outline-none text-sm`}
           />
         </div>
       </div>
@@ -41,7 +39,7 @@ const HeaderAdmin = ({ onHamburgerClick ,onProfileClick,onNotifiClick}) => {
         {/* Notification */}
         <BellIcon
         onClick={onNotifiClick}
-          className={`w-8 h-8 p-1 ${bgCartColor} rounded-full cursor-pointer`}
+          className={`w-8 h-8 p-1 ${bgCartColor} ${textColSecondary} rounded-full cursor-pointer`}
         />
 
         {/* Profile */}

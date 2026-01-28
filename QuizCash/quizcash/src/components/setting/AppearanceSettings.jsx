@@ -13,7 +13,7 @@ import {
 import { useEffect, useState } from "react";
 
 const AppearanceSettings = () => {
-  const [adminTheme, setAdminThemeState] = useState("system");
+  const [adminTheme, setAdminThemeState] = useState();
 
   useEffect(() => {
     const savedTheme = getAdminTheme();

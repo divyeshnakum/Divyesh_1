@@ -3,7 +3,14 @@ import AuthForm from "../components/AuthForm";
 import signupImg from "../assets/images/Login-cuate-2.png";
 import Header from "../HeaderLogin";
 import { bgColor } from "../components/ColorLayout";
+import { useNavigate } from "react-router-dom";
 const Signup = () => {
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    // ✅ after validation / API success
+    navigate("/signValidation");
+  };
   return (
     <>
       {" "}
@@ -33,6 +40,7 @@ const Signup = () => {
             footerLinkText="Sign in"
             footerLinkAction="/"
             forgotLink="../forgotPassword"
+            ButtonClick={handleLogin}
           />
         </AuthLayout>
       </div>

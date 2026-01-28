@@ -1,23 +1,9 @@
 import React, { useState } from "react";
 import LogoImg from "../assets/images/Rectangle-1.png";
-import iconDashbordReg from "../assets/icons/admin-dashboard-regular.png";
-import iconStudentReg from "../assets/icons/admin-students-regular.png";
-import iconQuizzeReg from "../assets/icons/admin-quizzes-regular.png";
-import icnoRewaredReg from "../assets/icons/admin-rewards-regular.png";
-import iconPaymentReg from "../assets/icons/admin-payment-regular.png";
-import iconAnalyticsReg from "../assets/icons/admin-analytics-regular.png";
-import iconSettingReg from "../assets/icons/setting-regular.png";
-
-import iconLogout from "../assets/icons/logout.png";
-
-import iconDashbordFill from "../assets/icons/admin-dashboard-fill.png";
-import iconStudentFill from "../assets/icons/admin-students-fill.png";
-import iconQuizzeFill from "../assets/icons/admin-quizzes-Fill.png";
-import icnoRewaredFill from "../assets/icons/admin-rewards-fill.png";
-import iconPaymentFill from "../assets/icons/admin-payment-fill.png";
-import iconAnalyticsFill from "../assets/icons/admin-analytics-fill.png";
-import iconSettingFill from "../assets/icons/setting-fill.png";
-
+import { FiLogOut, FiSettings } from "react-icons/fi";
+import { FaTrash, FaLightbulb, FaThLarge, FaPencilAlt } from "react-icons/fa";
+import { MdDashboard, MdPayments } from "react-icons/md";
+import { GiGraduateCap, GiMedal } from "react-icons/gi";
 import {
   bgCartColor,
   bgColor,
@@ -38,36 +24,12 @@ const Sidebar = ({
   setActiveIndex,
 }) => {
   const menuItems = [
-    {
-      name: "Dashboard",
-      icon: iconDashbordReg,
-      hoverIcon: iconDashbordFill,
-    },
-    {
-      name: "Students",
-      icon: iconStudentReg,
-      hoverIcon: iconStudentFill,
-    },
-    {
-      name: "Quizzes",
-      icon: iconQuizzeReg,
-      hoverIcon: iconQuizzeFill,
-    },
-    {
-      name: "Rewards",
-      icon: icnoRewaredReg,
-      hoverIcon: icnoRewaredFill,
-    },
-    {
-      name: "Payments",
-      icon: iconPaymentReg,
-      hoverIcon: iconPaymentFill,
-    },
-    {
-      name: "Analytics",
-      icon: iconAnalyticsReg,
-      hoverIcon: iconAnalyticsFill,
-    },
+    { name: "Dashboard", icon: <MdDashboard className="w-10 h-10"/> },
+    { name: "Students", icon: <GiGraduateCap className="w-10 h-10" /> },
+    { name: "Quizzes", icon: <FaLightbulb className="w-5 h-5" /> },
+    { name: "Rewards", icon: <GiMedal className="w-10 h-10" /> },
+    { name: "Payments", icon: <MdPayments className="w-8 h-8" /> },
+    { name: "Analytics", icon: <FaThLarge className="w-8 h-8" /> },
   ];
 
   return (
@@ -117,29 +79,15 @@ const Sidebar = ({
                 }
               `}
                 >
-                  {/* Icon */}
-                  <img
-                    src={item.icon}
-                    alt={item.name}
-                    className={`
-                  w-6 h-6 transition-all duration-200
-                  group-hover:hidden
-                  ${activeIndex === i ? "hidden" : "block group-hover:hidden"}
-                `}
-                  />
-                  <img
-                    src={item.hoverIcon}
-                    alt={item.name}
-                    className={`
-    w-8 h-8 transition-all duration-200
-    ${activeIndex === i ? "block" : "hidden group-hover:block"}
-  `}
-                  />
-
+                  <span
+                    className={`flex justify-center items-center w-6 h-8 text-center`}
+                  >
+                    {item.icon}
+                  </span>
                   {/* Name */}
                   <span
                     className={`${
-                      activeIndex === i ? "font-bold" : "group-hover:font-bold"
+                      activeIndex === i ? "font-bold" : "hover:font-bold"
                     }`}
                   >
                     {item.name}
@@ -153,23 +101,17 @@ const Sidebar = ({
           <div className="flex flex-col align-bottom justify-end gap-2">
             <div className="flex-1 px-3  overflow-y-auto">
               <div
-                 onClick={() => setActiveIndex(6)} // Set activeIndex to 6 for Settings
-      className={`
+                onClick={() => setActiveIndex(6)} // Set activeIndex to 6 for Settings
+                className={`
         group flex items-center gap-3 px-4 py-2 text-md cursor-pointer rounded-r-2xl border ${textColPrimary} ${borderColor} my-2 -ml-4 hover:-ml-2 hover:px-2 transition-all duration-200 hover:font-bold hover:border-black hover:rounded-l-2xl
         ${activeIndex === 6 ? `${textColPrimary}  font-bold rounded-l-2xl ${borderColor}   -ml-2 px-2` : ""}
       `}
               >
-                <img
-                  src={iconSettingReg}
-                  alt="Settings"
-                  className={`w-6 h-6 transition-all duration-200 group-hover:hidden ${activeIndex === 6 ? "hidden" : ""}`}
-                />
-                <img
-                  src={iconSettingFill}
-                  alt="Settings"
-                  
-                  className={`w-6 h-6 transition-all duration-200 ${activeIndex === 6 ? "block" : "hidden group-hover:block"}`}
-                />
+                <span>
+                  <FiSettings
+                    className={`flex justify-center items-center w-6 h-8 text-center`}
+                  />
+                </span>
                 <span className=" ">Settings</span>
               </div>
             </div>
@@ -180,11 +122,7 @@ const Sidebar = ({
                 to="/"
                 className={`w-full flex items-center justify-center gap-3 px-4 py-2  text-sm font-medium text-white ${RedErrorCol} rounded-r-2xl transition`}
               >
-                <img
-                  src={iconLogout}
-                  alt="Logout"
-                  className="w-6 h-6 transition-all duration-200 group-hover:hidden"
-                />
+                <FiLogOut className="w-6 h-6" />
                 Logout
               </Link>
             </div>

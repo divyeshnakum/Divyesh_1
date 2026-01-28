@@ -40,7 +40,7 @@ const AuthForm = ({
             <input
               type={field.type}
               placeholder={field.placeholder}
-              className={`w-full rounded-xl border ${textColSecondary} ${borderColor} px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:${baseColorYel}`}
+              className={`w-full rounded-xl border ${bgCartColor} ${textColSecondary} ${borderColor} px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:${baseColorYel}`}
             />
           </div>
         ))}
@@ -83,7 +83,7 @@ const AuthForm = ({
         <button
         onClick={ButtonClick}
           type="submit"
-          className={`w-full ${baseColorYel} ${hoverColorYel} transition ${textColSecondary} font-medium py-2 rounded-xl`}
+          className={`w-full ${baseColorYel} ${hoverColorYel} transition ${textColSecondary} font-medium py-2 cursor-pointer rounded-xl`}
         >
           {buttonText}
         </button>
